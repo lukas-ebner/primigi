@@ -4,10 +4,10 @@ function toHex(n: number): string {
   return n.toString(16).padStart(2, "0");
 }
 
-export function encodeText(text: string, leftToRight = true): Uint8Array {
+export function encodeText(text: string): Uint8Array {
   const chars = Array.from(text).map((c) => c.charCodeAt(0));
   const length = chars.length + 1;
-  const direction = leftToRight ? 0 : 1;
+  const direction = 0;
   const checksum =
     (256 -
       ((CMD_TEXT +
@@ -34,10 +34,9 @@ export function encodeText(text: string, leftToRight = true): Uint8Array {
 
 export async function sendTextToShoe(
   characteristic: BluetoothRemoteGATTCharacteristic,
-  text: string,
-  leftToRight = true
+  text: string
 ): Promise<void> {
-  const data = encodeText(text, leftToRight);
+  const data = encodeText(text);
   const CHUNK = 20;
   for (let i = 0; i < data.length; i += CHUNK) {
     await characteristic.writeValue(data.slice(i, i + CHUNK));
