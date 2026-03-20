@@ -70,7 +70,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
           if (d.valid) setIsAuthed(true);
           else window.location.replace("/");
         })
-        .catch(() => router.push("/"));
+        .catch(() => window.location.replace("/"));
     }
   }, [requireAuth, router]);
 

@@ -52,6 +52,30 @@ const faqSchema = {
         text: "Die Schuhe werden über das mitgelieferte USB-Kabel aufgeladen. Der USB-Anschluss befindet sich seitlich am Schuh. Eine volle Ladung hält ca. 4–6 Stunden.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Welche Primigi Schuhe sind mit der App kompatibel?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Alle Primigi Modelle der Reihe 'Infinity Light' bzw. 'B&g Infinity Light' — sowohl die Low-Top Sneaker für Jungen und Mädchen als auch die High-Top Varianten. Erkennbar am LED-Display im Klettverschluss und dem roten Knopf unter der Fersenlasche.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wo kann ich den Primigi Lights App Download finden?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Die originale Primigi Lights App ist im App Store nicht verfügbar und im Google Play Store kaum noch zu finden. Unsere Web-App auf primigi.dev ist die zuverlässige Alternative — funktioniert direkt im Browser ohne Download.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wie fallen Primigi Infinity Light Schuhe aus?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Primigi Infinity Light Schuhe fallen normal bis leicht klein aus. Wir empfehlen, eine halbe Größe größer zu bestellen. Die Schuhe gibt es in den Größen EU 24 bis 39.",
+      },
+    },
   ],
 };
 

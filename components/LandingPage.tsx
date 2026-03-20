@@ -57,6 +57,18 @@ const FAQ = [
     q: "Wie lade ich die LED-Schuhe auf?",
     a: "Die Schuhe werden über das mitgelieferte USB-Kabel aufgeladen. Der USB-Anschluss befindet sich seitlich am Schuh. Eine volle Ladung hält ca. 4–6 Stunden.",
   },
+  {
+    q: "Welche Primigi Schuhe sind mit der App kompatibel?",
+    a: "Alle Primigi Modelle der Reihe 'Infinity Light' bzw. 'B&g Infinity Light' — sowohl die Low-Top Sneaker für Jungen und Mädchen als auch die High-Top Varianten. Erkennbar am LED-Display im Klettverschluss und dem roten Knopf unter der Fersenlasche.",
+  },
+  {
+    q: "Wo kann ich den Primigi Lights App Download finden?",
+    a: "Die originale Primigi Lights App ist im App Store nicht verfügbar und im Google Play Store kaum noch zu finden. Unsere Web-App auf primigi.dev ist die zuverlässige Alternative — funktioniert direkt im Browser ohne Download.",
+  },
+  {
+    q: "Wie fallen Primigi Infinity Light Schuhe aus?",
+    a: "Primigi Infinity Light Schuhe fallen normal bis leicht klein aus. Wir empfehlen, eine halbe Größe größer zu bestellen. Die Schuhe gibt es in den Größen EU 24 bis 39.",
+  },
 ];
 
 export default function LandingPage() {
@@ -802,24 +814,25 @@ export default function LandingPage() {
               marginBottom: 16,
             }}
           >
-            Primigi Infinity Light Schuhe programmieren — ohne Android
+            Primigi Infinity Light Schuhe programmieren — die Primigi Lights App Alternative
           </h2>
           <p>
             Die Primigi Infinity Light Kollektion begeistert Kinder mit ihrer
-            programmierbaren LED-Laufschrift am Klettverschluss. Doch viele
+            programmierbaren LED-Laufschrift am Klettverschluss. Ob als LED Schuhe
+            für Kinder Jungen oder als LED Schuhe für Kinder Mädchen — die leuchtenden
+            Sneaker sind der Hit auf dem Schulhof. Doch viele
             Eltern stehen vor einem Problem: Die offizielle „Primigi Lights"
-            App ist ausschließlich für Android verfügbar und in den meisten
-            App Stores nicht mehr auffindbar. Wer ein iPhone, ein iPad oder
-            einen Mac nutzt, stand bisher ohne Lösung da.
+            App ist ausschließlich für Android verfügbar und im Google Play Store
+            nicht mehr auffindbar. Der Primigi Lights App Download funktioniert nicht
+            mehr. Wer ein iPhone, ein iPad oder einen Mac nutzt, stand bisher ohne Lösung da.
           </p>
           <p style={{ marginTop: 16 }}>
-            Unsere Web-App auf primigi.dev löst genau dieses Problem. Durch
-            Reverse Engineering des Bluetooth-Low-Energy-Protokolls (BLE) der
-            Schuhe haben wir eine browserbasierte Anwendung entwickelt, die
-            auf jedem Gerät mit Bluetooth funktioniert — ganz ohne
-            Installation. Sie öffnen die Seite, verbinden den Schuh per
-            Bluetooth, geben Ihren Wunschtext ein und sehen ihn sofort als
-            scrollende LED-Laufschrift auf dem Schuh-Display.
+            Wir hatten das gleiche Problem. Zwei Kinder, leuchtende Schuhe,
+            kein Android-Gerät im Haus. Also haben wir kurzerhand die App
+            selbst gebaut. Per Reverse Engineering des Bluetooth-Protokolls
+            entstand eine Web-App, die im Browser läuft — egal ob iPhone,
+            Mac oder Windows-Laptop. Seite öffnen, Schuh verbinden,
+            Wunschtext eintippen. Fertig.
           </p>
 
           <h3
@@ -834,12 +847,13 @@ export default function LandingPage() {
             Primigi LED Schuhe App für iPhone und Mac
           </h3>
           <p>
-            Wenn Sie nach „Primigi App iPhone", „Primigi App Mac" oder
-            „Primigi Lights App Download" suchen, sind Sie hier richtig.
+            Wenn Sie nach „Primigi App iPhone", „Primigi App Mac", „Primigi App Download"
+            oder „Primigi Lights App Apple" suchen, sind Sie hier richtig.
             Apple-Geräte unterstützen Web Bluetooth, was bedeutet, dass unsere
-            App direkt im Safari- oder Chrome-Browser läuft. Kein Umweg über
+            Primigi App direkt im Safari- oder Chrome-Browser läuft. Kein Umweg über
             Android-Emulatoren, kein Ausleihen eines Android-Geräts — einfach
-            primigi.dev öffnen und loslegen.
+            primigi.dev öffnen und loslegen. Die Primigi App für iPhone funktioniert
+            genauso zuverlässig wie die originale Android-Version.
           </p>
 
           <h3
@@ -857,9 +871,10 @@ export default function LandingPage() {
             Auch Windows-Nutzer profitieren: Chrome und Edge unterstützen Web
             Bluetooth vollständig. Wenn Ihr PC oder Laptop Bluetooth hat (was
             bei den meisten modernen Geräten der Fall ist), können Sie die
-            Primigi Schuhe direkt vom Computer aus programmieren. Ideal, wenn
+            Primigi Kinderschuhe direkt vom Computer aus programmieren. Ideal, wenn
             die Kinder ihren eigenen Text für den Schultag vorbereiten
-            möchten.
+            möchten. Die Primigi Infinity Light App funktioniert auf Windows 10 und 11
+            ohne zusätzliche Software.
           </p>
 
           <h3
@@ -874,13 +889,12 @@ export default function LandingPage() {
             Was ist die Primigi Lights App?
           </h3>
           <p>
-            Die „Primigi Lights" App wurde vom Hersteller entwickelt, um die
-            LED-Anzeige der Infinity Light Schuhe zu personalisieren. Über
-            Bluetooth Low Energy (BLE) verbindet sich die App mit dem Schuh
-            und überträgt Texte, Grafiken und Animationen an das LED-Display.
-            Die Original-App wurde von „damonChen" für Android entwickelt und
-            war im Google Play Store erhältlich, ist aber inzwischen schwer zu
-            finden.
+            Primigi hat die „Primigi Lights" App ursprünglich für Android
+            veröffentlicht. Per Bluetooth Low Energy (BLE) verbindet sie sich
+            mit dem Schuh und schickt Texte, Grafiken und Animationen ans
+            LED-Display. Klingt toll — nur: Im Play Store ist sie praktisch
+            verschwunden. Und für iPhones gab es sie nie. Genau diese Lücke
+            füllt primigi.dev als Primigi Lights App Alternative.
           </p>
 
           <h3
@@ -895,14 +909,12 @@ export default function LandingPage() {
             So funktionieren die Primigi LED-Schuhe
           </h3>
           <p>
-            Jeder Primigi Infinity Light Schuh verfügt über ein kleines
-            LED-Matrix-Display im Klettverschluss. Ein roter Knopf unter der
-            Fersenlasche schaltet die LEDs ein. Im Standardmodus zeigt der
-            Schuh „PRIMIGI" und vorinstallierte Grafiken an. Durch kurzes
-            Doppelklicken kann die Laufrichtung und Orientierung geändert
-            werden. Die Batterie wird über das mitgelieferte USB-Kabel geladen
-            — der USB-Anschluss dient ausschließlich zum Laden, nicht zur
-            Datenübertragung.
+            Am Klettverschluss sitzt ein kleines LED-Matrix-Display. Roten
+            Knopf unter der Fersenlasche drücken — schon leuchtet „PRIMIGI"
+            über den Schuh. Vorinstallierte Grafiken laufen im Wechsel durch.
+            Per Doppelklick ändern Sie Laufrichtung und Orientierung.
+            Wichtig zu wissen: Der USB-Anschluss am Schuh lädt nur den Akku.
+            Daten gehen ausschließlich per Bluetooth rein.
           </p>
 
           <h3
@@ -917,14 +929,55 @@ export default function LandingPage() {
             Technische Hintergründe
           </h3>
           <p>
-            Die Kommunikation zwischen App und Schuh läuft über Bluetooth Low
-            Energy (BLE). Der Schuh meldet sich als „PRIMIGI LED" und
-            verwendet den BLE-Service UUID
-            0000ae00-0000-1000-8000-00805f9b34fb. Texte werden als
-            Hex-kodierte Pakete mit Prüfsumme in 20-Byte-Blöcken übertragen.
-            Unsere Web-App nutzt die Web Bluetooth API, um genau dieses
-            Protokoll im Browser nachzubilden — sicher, schnell und ohne
-            Zusatzsoftware.
+            Unter der Haube ist es Bluetooth Low Energy (BLE). Der Schuh
+            taucht als „PRIMIGI LED" auf und erwartet Hex-kodierte Pakete mit
+            Prüfsumme — jeweils 20 Byte am Stück. Wir haben das Protokoll
+            aus der Original-APK reverse-engineered und als Web Bluetooth
+            API im Browser nachgebaut. Klingt nerdig, bedeutet für Sie aber
+            einfach: Seite öffnen, verbinden, Text eintippen, läuft.
+          </p>
+
+          <h3
+            style={{
+              fontSize: 17,
+              fontWeight: 700,
+              color: "#94a3b8",
+              marginTop: 32,
+              marginBottom: 12,
+            }}
+          >
+            LED Schuhe Kinder — welche Modelle sind kompatibel?
+          </h3>
+          <p>
+            Die Primigi Infinity Light Reihe umfasst mehrere Modelle für Jungen
+            und Mädchen. LED Schuhe für Kinder Jungen gibt es als blaue oder
+            schwarze Sneaker (PIL 2959x), LED Schuhe für Kinder Mädchen in Rosa,
+            Weiß und Silber (PIL 2969x). Zusätzlich sind High-Top Varianten
+            (PIL 2961x) und Velcro-Low-Modelle (PIL 2963x) erhältlich. Alle
+            Modelle mit dem Markennamen „Infinity Light" oder „B&g Infinity Light"
+            haben das programmierbare LED-Display und sind mit unserer App kompatibel.
+            Die Schuhe sind in den Größen EU 24 bis 39 erhältlich und werden über
+            Händler wie Amazon, Spartoo und den Primigi Online-Shop in ganz Europa
+            verkauft.
+          </p>
+
+          <h3
+            style={{
+              fontSize: 17,
+              fontWeight: 700,
+              color: "#94a3b8",
+              marginTop: 32,
+              marginBottom: 12,
+            }}
+          >
+            Primigi Schuhe mit App steuern — wie fallen Primigi Schuhe aus?
+          </h3>
+          <p>
+            Kurze Antwort: Eher knapp. Bei unseren Kids mussten wir eine halbe
+            Nummer größer nehmen. Sportlicher Schnitt, Klettverschluss mit
+            integriertem LED-Display — sitzt fest, aber bestellen Sie im Zweifel
+            lieber eine Nummer größer. Der Akku hält bei normalem Spielplatz-Einsatz
+            4 bis 6 Stunden, geladen wird per USB-Kabel (liegt bei).
           </p>
         </article>
       </section>

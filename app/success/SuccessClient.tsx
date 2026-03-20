@@ -17,7 +17,7 @@ export default function SuccessClient({
   useEffect(() => {
     localStorage.setItem("primigi_token", token);
     localStorage.setItem("primigi_session", sessionId);
-    router.push(`/app?token=${token}&session=${sessionId}`);
+    window.location.href = `/tool?token=${token}&session=${sessionId}`;
   }, [token, sessionId, router]);
 
   return (
