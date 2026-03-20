@@ -44,7 +44,12 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
 
   const [status, setStatus] = useState<"idle" | "connecting" | "connected" | "error">("idle");
   const [characteristic, setCharacteristic] = useState<BluetoothRemoteGATTCharacteristic | null>(null);
-  const [text, setText] = useState("BIRTHDAY BOY");
+  const [text, setText] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("primigi_last_text") || "BIRTHDAY BOY";
+    }
+    return "BIRTHDAY BOY";
+  });
   const [sending, setSending] = useState(false);
   const [lastSent, setLastSent] = useState("");
   const [isSupported, setIsSupported] = useState(true);
@@ -102,6 +107,8 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
     }
   }, [accessCode]);
 
+  const sendTextRef = useRef<((t: string) => Promise<void>) | null>(null);
+
   const connect = useCallback(async () => {
     if (!navigator.bluetooth) return;
     setStatus("connecting");
@@ -110,24 +117,34 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
         filters: [{ name: DEVICE_NAME }],
         optionalServices: [SERVICE_UUID],
       });
-      device.addEventListener("gattserverdisconnected", () => setStatus("idle"));
+      device.addEventListener("gattserverdisconnected", () => {
+        setStatus("idle");
+        setCharacteristic(null);
+      });
       const server = await device.gatt!.connect();
       const service = await server.getPrimaryService(SERVICE_UUID);
       const char = await service.getCharacteristic(CHAR_UUID);
       setCharacteristic(char);
       setStatus("connected");
+      // Auto-send last text after connect so shoe shows it immediately
+      if (sendTextRef.current) {
+        const saved = localStorage.getItem("primigi_last_text") || "BIRTHDAY BOY";
+        setTimeout(() => sendTextRef.current?.(saved), 300);
+      }
     } catch (err) {
       console.error(err);
       setStatus("error");
     }
   }, []);
 
-  const sendText = useCallback(async () => {
-    if (!characteristic || !text.trim()) return;
+  const sendText = useCallback(async (override?: string) => {
+    const t = (override ?? text).trim();
+    if (!characteristic || !t) return;
     setSending(true);
     try {
-      await sendTextToShoe(characteristic, text.trim());
-      setLastSent(text.trim());
+      await sendTextToShoe(characteristic, t);
+      setLastSent(t);
+      localStorage.setItem("primigi_last_text", t);
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -135,6 +152,11 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       setSending(false);
     }
   }, [characteristic, text]);
+
+  // Keep sendTextRef in sync so the connect callback can call the latest version
+  useEffect(() => {
+    sendTextRef.current = sendText;
+  }, [sendText]);
 
   const insertSymbol = useCallback((sym: string) => {
     const input = inputRef.current;
@@ -285,7 +307,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && sendText()}
+              onKeyDown={(e) => e.key === "Enter" && sendText(undefined)}
               maxLength={40}
               placeholder="Text eingeben..."
               style={{
@@ -326,7 +348,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
 
         {/* Send button */}
         <button
-          onClick={sendText}
+          onClick={() => sendText()}
           disabled={status !== "connected" || sending || !text.trim()}
           style={{
             width: "100%", padding: "16px", borderRadius: 12, border: "none",
