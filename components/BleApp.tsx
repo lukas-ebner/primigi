@@ -82,7 +82,11 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
     setAccessChecking(true);
     setAccessError("");
     try {
-      const res = await fetch(`/api/verify-session?session=${encodeURIComponent(code)}`);
+      const res = await fetch(`/api/verify-session`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: code }),
+      });
       const d = await res.json();
       if (d.valid && d.token) {
         localStorage.setItem("primigi_token", d.token);
