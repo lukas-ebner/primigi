@@ -61,14 +61,14 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       const token = localStorage.getItem("primigi_token");
       const session = localStorage.getItem("primigi_session");
       if (!token || !session) {
-        router.push("/");
+        window.location.replace("/");
         return;
       }
       fetch(`/api/verify?token=${encodeURIComponent(token)}&session=${encodeURIComponent(session)}`)
         .then((r) => r.json())
         .then((d: { valid: boolean }) => {
           if (d.valid) setIsAuthed(true);
-          else router.push("/");
+          else window.location.replace("/");
         })
         .catch(() => router.push("/"));
     }
