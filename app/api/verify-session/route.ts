@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ valid: false, error: "Ungültiger Zugangscode" }, { status: 400 });
   }
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-01-27.acacia" });
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2024-06-20" });
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
