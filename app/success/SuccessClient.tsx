@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Script from "next/script";
 
 interface SuccessClientProps {
   token: string;
@@ -17,6 +18,17 @@ export default function SuccessClient({ token, sessionId, code }: SuccessClientP
     if (code) localStorage.setItem("primigi_code", code);
   }, [token, sessionId, code]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "conversion", {
+        send_to: "AW-17857016257/aaUNCIqZyN4bEMHj8cJC",
+        value: 1.99,
+        currency: "EUR",
+        transaction_id: sessionId,
+      });
+    }
+  }, [sessionId]);
+
   function copyCode() {
     navigator.clipboard.writeText(code).then(() => {
       setCopied(true);
@@ -25,6 +37,17 @@ export default function SuccessClient({ token, sessionId, code }: SuccessClientP
   }
 
   return (
+    <>
+    <Script id="gtag-conversion" strategy="afterInteractive">{`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17857016257/aaUNCIqZyN4bEMHj8cJC',
+        'value': 1.99,
+        'currency': 'EUR',
+        'transaction_id': '${sessionId}'
+      });
+    `}</Script>
     <div
       style={{
         background: "#08080f",
@@ -103,5 +126,6 @@ export default function SuccessClient({ token, sessionId, code }: SuccessClientP
         </a>
       </div>
     </div>
+    </>
   );
 }
