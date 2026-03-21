@@ -27,11 +27,21 @@ const PRESETS = [
   "PLAY TO WIN",
 ];
 
-const SYMBOLS = ["♥", "★", "!", "?", ".", ",", "-", "+", ":", "/", "(", ")", "#", "@", "*", "&", "%", "$", "=", "<", ">"];
+// ♥ removed — shoe maps it to byte 0x65 ('e') because charCode 9829 & 0xFF = 101
+const SYMBOLS = ["★", "!", "?", ".", ",", "-", "+", ":", "/", "(", ")", "#", "@", "*", "&", "%", "$", "=", "<", ">"];
 
 const MODE_ICONS: Record<number, string> = {
   1: "⚡", 2: "👾", 3: "❄️", 4: "⬇️", 5: "⬆️", 6: "➡️", 7: "⬅️", 8: "■",
 };
+
+interface Shoe {
+  id: string;
+  label: string;
+  char: BluetoothRemoteGATTCharacteristic;
+}
+
+// "all" = both shoes, 0 = shoe 1 only, 1 = shoe 2 only
+type Target = "all" | 0 | 1;
 
 interface BleAppProps {
   requireAuth?: boolean;
@@ -51,8 +61,11 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
   const [accessError, setAccessError] = useState("");
   const [accessChecking, setAccessChecking] = useState(false);
 
-  const [status, setStatus] = useState<"idle" | "connecting" | "connected" | "error">("idle");
-  const [characteristic, setCharacteristic] = useState<BluetoothRemoteGATTCharacteristic | null>(null);
+  const [shoes, setShoes] = useState<Shoe[]>([]);
+  const [activeTarget, setActiveTarget] = useState<Target>("all");
+  const [connecting, setConnecting] = useState(false);
+  const [connectError, setConnectError] = useState(false);
+
   const [text, setText] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("primigi_last_text") || "BIRTHDAY BOY";
@@ -64,13 +77,14 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
   const [isSupported, setIsSupported] = useState(true);
   const [isIOS, setIsIOS] = useState(false);
 
-  // Settings state
+  const [sendFlash, setSendFlash] = useState(false);
   const [brightness, setBrightnessState] = useState(4);
   const [speed, setSpeedState] = useState(4);
   const [activeAnimMode, setActiveAnimMode] = useState<number | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const sendTextRef = useRef<((t: string) => Promise<void>) | null>(null);
+  const textRef = useRef(text);
+  useEffect(() => { textRef.current = text; }, [text]);
 
   // Check browser support + localStorage auth
   useEffect(() => {
@@ -125,88 +139,131 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
     }
   }, [accessCode]);
 
+  // Get characteristics to send to based on active target
+  const getTargetChars = useCallback(
+    (shoeList: Shoe[]): BluetoothRemoteGATTCharacteristic[] => {
+      if (activeTarget === "all") return shoeList.map((s) => s.char);
+      if (shoeList[activeTarget]) return [shoeList[activeTarget].char];
+      return shoeList.map((s) => s.char);
+    },
+    [activeTarget]
+  );
+
   const connect = useCallback(async () => {
-    if (!navigator.bluetooth) return;
-    setStatus("connecting");
+    if (!navigator.bluetooth || shoes.length >= 2) return;
+    setConnecting(true);
+    setConnectError(false);
     try {
       const device = await navigator.bluetooth.requestDevice({
         filters: [{ name: DEVICE_NAME }],
         optionalServices: [SERVICE_UUID],
       });
+
+      // Prevent duplicate connections
+      if (shoes.some((s) => s.id === device.id)) {
+        setConnecting(false);
+        return;
+      }
+
+      const nextIndex = shoes.length;
+      const label = nextIndex === 0 ? "Schuh 1" : "Schuh 2";
+
       device.addEventListener("gattserverdisconnected", () => {
-        setStatus("idle");
-        setCharacteristic(null);
+        setShoes((prev) => prev.filter((s) => s.id !== device.id));
+        setActiveTarget("all");
       });
+
       const server = await device.gatt!.connect();
       const service = await server.getPrimaryService(SERVICE_UUID);
       const char = await service.getCharacteristic(CHAR_UUID);
-      setCharacteristic(char);
-      setStatus("connected");
-      // Auto-send last text after connect
-      if (sendTextRef.current) {
-        const saved = localStorage.getItem("primigi_last_text") || "BIRTHDAY BOY";
-        setTimeout(() => sendTextRef.current?.(saved), 300);
-      }
+
+      const newShoe: Shoe = { id: device.id, label, char };
+      setShoes((prev) => [...prev, newShoe]);
+
+      // Auto-send last text to this specific shoe
+      const saved = localStorage.getItem("primigi_last_text") || "BIRTHDAY BOY";
+      setTimeout(() => sendTextToShoe(char, saved).catch(console.error), 300);
     } catch (err) {
       console.error(err);
-      setStatus("error");
+      setConnectError(true);
+    } finally {
+      setConnecting(false);
     }
+  }, [shoes]);
+
+  const disconnectShoe = useCallback((id: string) => {
+    setShoes((prev) => prev.filter((s) => s.id !== id));
+    setActiveTarget("all");
   }, []);
 
-  const sendText = useCallback(async (override?: string) => {
-    const t = (override ?? text).trim();
-    if (!characteristic || !t) return;
-    setSending(true);
-    try {
-      await sendTextToShoe(characteristic, t);
-      setLastSent(t);
-      setActiveAnimMode(null);
-      localStorage.setItem("primigi_last_text", t);
-    } catch (err) {
-      console.error(err);
-      setStatus("error");
-    } finally {
-      setSending(false);
-    }
-  }, [characteristic, text]);
+  const sendText = useCallback(
+    async (override?: string) => {
+      const t = (override ?? textRef.current).trim();
+      if (shoes.length === 0 || !t) return;
+      setSending(true);
+      const targets = getTargetChars(shoes);
+      try {
+        await Promise.all(targets.map((char) => sendTextToShoe(char, t)));
+        setLastSent(t);
+        setActiveAnimMode(null);
+        localStorage.setItem("primigi_last_text", t);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setSending(false);
+      }
+    },
+    [shoes, getTargetChars]
+  );
 
-  useEffect(() => {
-    sendTextRef.current = sendText;
-  }, [sendText]);
+  const insertSymbol = useCallback(
+    (sym: string) => {
+      const input = inputRef.current;
+      if (!input) {
+        setText((t) => (t + sym).slice(0, 40));
+        return;
+      }
+      const start = input.selectionStart ?? text.length;
+      const end = input.selectionEnd ?? text.length;
+      const newText = (text.slice(0, start) + sym + text.slice(end)).slice(0, 40);
+      setText(newText);
+      requestAnimationFrame(() => {
+        input.focus();
+        input.setSelectionRange(start + sym.length, start + sym.length);
+      });
+    },
+    [text]
+  );
 
-  const insertSymbol = useCallback((sym: string) => {
-    const input = inputRef.current;
-    if (!input) {
-      setText((t) => (t + sym).slice(0, 40));
-      return;
-    }
-    const start = input.selectionStart ?? text.length;
-    const end = input.selectionEnd ?? text.length;
-    const newText = (text.slice(0, start) + sym + text.slice(end)).slice(0, 40);
-    setText(newText);
-    requestAnimationFrame(() => {
-      input.focus();
-      input.setSelectionRange(start + sym.length, start + sym.length);
-    });
-  }, [text]);
+  const handleBrightness = useCallback(
+    async (val: number) => {
+      setBrightnessState(val);
+      const targets = getTargetChars(shoes);
+      await Promise.all(targets.map((char) => sendBrightness(char, val).catch(console.error)));
+    },
+    [shoes, getTargetChars]
+  );
 
-  const handleBrightness = useCallback(async (val: number) => {
-    setBrightnessState(val);
-    if (characteristic) await sendBrightness(characteristic, val).catch(console.error);
-  }, [characteristic]);
+  const handleSpeed = useCallback(
+    async (val: number) => {
+      setSpeedState(val);
+      const targets = getTargetChars(shoes);
+      await Promise.all(targets.map((char) => sendSpeed(char, val).catch(console.error)));
+    },
+    [shoes, getTargetChars]
+  );
 
-  const handleSpeed = useCallback(async (val: number) => {
-    setSpeedState(val);
-    if (characteristic) await sendSpeed(characteristic, val).catch(console.error);
-  }, [characteristic]);
+  const handleAnimMode = useCallback(
+    async (mode: number) => {
+      if (shoes.length === 0) return;
+      setActiveAnimMode(mode);
+      const targets = getTargetChars(shoes);
+      await Promise.all(targets.map((char) => sendAnimationMode(char, mode).catch(console.error)));
+    },
+    [shoes, getTargetChars]
+  );
 
-  const handleAnimMode = useCallback(async (mode: number) => {
-    if (!characteristic) return;
-    setActiveAnimMode(mode);
-    await sendAnimationMode(characteristic, mode).catch(console.error);
-  }, [characteristic]);
-
-  const connected = status === "connected";
+  const connected = shoes.length > 0;
 
   // ── Browser not supported ──────────────────────────────────────────────────
   if (!isSupported) {
@@ -324,6 +381,12 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
   }
 
   // ── Main app ───────────────────────────────────────────────────────────────
+  const navStatus = shoes.length === 0
+    ? "⚪ Getrennt"
+    : shoes.length === 1
+    ? "🟢 1 Schuh verbunden"
+    : "🟢 2 Schuhe verbunden";
+
   return (
     <div style={pageStyle}>
       <nav style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 24px", borderBottom: "1px solid rgba(56,189,248,0.1)", marginBottom: 24 }}>
@@ -332,7 +395,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
           PRIMIGI.DEV
         </a>
         <span style={{ fontSize: 12, color: connected ? "#4ade80" : "#64748b" }}>
-          {connected ? "🟢 Verbunden" : status === "connecting" ? "🟡 Verbinde..." : status === "error" ? "🔴 Fehler" : "⚪ Getrennt"}
+          {navStatus}
         </span>
       </nav>
 
@@ -346,22 +409,93 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
           </div>
         </div>
 
-        {/* Connect */}
-        {!connected && (
-          <button
-            onClick={connect}
-            disabled={status === "connecting"}
-            style={{
-              width: "100%", padding: "16px", borderRadius: 12, border: "none",
-              background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
-              color: "#08080f", fontWeight: 700, fontSize: 17,
-              cursor: status === "connecting" ? "wait" : "pointer",
-              marginBottom: 16, opacity: status === "connecting" ? 0.7 : 1,
-            }}
-          >
-            {status === "connecting" ? "Verbinde..." : status === "error" ? "Erneut verbinden" : "🔵 Schuh verbinden"}
-          </button>
-        )}
+        {/* ── Shoe connection ── */}
+        <div style={{ background: "#0f0f1a", borderRadius: 16, padding: 16, border: "1px solid rgba(56,189,248,0.1)", marginBottom: 16 }}>
+
+          {/* Connected shoes */}
+          {shoes.length > 0 && (
+            <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
+              {shoes.map((shoe) => (
+                <div
+                  key={shoe.id}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 8,
+                    background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.25)",
+                    borderRadius: 20, padding: "6px 10px 6px 14px",
+                  }}
+                >
+                  <span style={{ color: "#4ade80", fontSize: 13, fontWeight: 600 }}>🟢 {shoe.label}</span>
+                  <button
+                    onClick={() => disconnectShoe(shoe.id)}
+                    title="Trennen"
+                    style={{
+                      background: "rgba(248,113,113,0.1)", border: "1px solid rgba(248,113,113,0.2)",
+                      borderRadius: "50%", color: "#f87171", cursor: "pointer",
+                      fontSize: 12, width: 22, height: 22, lineHeight: "1",
+                      display: "flex", alignItems: "center", justifyContent: "center", padding: 0,
+                    }}
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Connect button */}
+          {shoes.length < 2 && (
+            <button
+              onClick={connect}
+              disabled={connecting}
+              style={{
+                width: "100%", padding: "14px", borderRadius: 10,
+                background: shoes.length > 0
+                  ? "transparent"
+                  : "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
+                color: shoes.length > 0 ? "#38bdf8" : "#08080f",
+                border: shoes.length > 0 ? "1px dashed rgba(56,189,248,0.3)" : "none",
+                fontWeight: 700, fontSize: 15,
+                cursor: connecting ? "wait" : "pointer",
+                opacity: connecting ? 0.7 : 1,
+                transition: "all 0.2s",
+              }}
+            >
+              {connecting
+                ? "Verbinde..."
+                : shoes.length === 0
+                ? "🔵 Schuh verbinden"
+                : "+ Zweiten Schuh verbinden"}
+            </button>
+          )}
+
+          {connectError && (
+            <p style={{ color: "#f87171", fontSize: 13, textAlign: "center", marginTop: 8 }}>
+              Verbindung fehlgeschlagen — Schuh einschalten und erneut versuchen.
+            </p>
+          )}
+
+          {/* Target selector — only when 2 shoes are connected */}
+          {shoes.length === 2 && (
+            <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
+              {(["all", 0, 1] as const).map((target) => (
+                <button
+                  key={String(target)}
+                  onClick={() => setActiveTarget(target)}
+                  style={{
+                    flex: 1, padding: "8px 4px", borderRadius: 8,
+                    background: activeTarget === target ? "rgba(56,189,248,0.15)" : "rgba(56,189,248,0.03)",
+                    color: activeTarget === target ? "#38bdf8" : "#64748b",
+                    border: `1px solid ${activeTarget === target ? "rgba(56,189,248,0.4)" : "rgba(56,189,248,0.1)"}`,
+                    cursor: "pointer", fontSize: 12, fontWeight: 600,
+                    transition: "all 0.15s",
+                  } as React.CSSProperties}
+                >
+                  {target === "all" ? "Beide" : shoes[target]?.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Text input */}
         <div style={{ background: "#0f0f1a", borderRadius: 16, padding: 20, border: "1px solid rgba(56,189,248,0.1)", marginBottom: 12 }}>
@@ -413,18 +547,29 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
 
         {/* Send button */}
         <button
-          onClick={() => sendText()}
+          onClick={() => {
+            if (!connected || sending || !text.trim()) return;
+            setSendFlash(true);
+            setTimeout(() => setSendFlash(false), 600);
+            sendText();
+          }}
           disabled={!connected || sending || !text.trim()}
           style={{
             width: "100%", padding: "16px", borderRadius: 12, border: "none",
-            background: connected && !sending ? "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)" : "rgba(56,189,248,0.1)",
+            background: sendFlash
+              ? "linear-gradient(135deg, #4ade80 0%, #38bdf8 100%)"
+              : connected && !sending
+              ? "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)"
+              : "rgba(56,189,248,0.1)",
             color: connected && !sending ? "#08080f" : "#475569",
             fontWeight: 700, fontSize: 17,
             cursor: connected && !sending ? "pointer" : "not-allowed",
-            marginBottom: 16, transition: "all 0.2s",
+            marginBottom: 16,
+            transform: sendFlash ? "scale(0.97)" : "scale(1)",
+            transition: "all 0.15s",
           }}
         >
-          {sending ? "Sende..." : !connected ? "Erst verbinden →" : "📡 Text senden"}
+          {sending ? "⏳ Sende..." : sendFlash ? "✓ Gesendet!" : !connected ? "Erst verbinden →" : `📡 Text senden${shoes.length === 2 && activeTarget !== "all" ? ` an ${shoes[activeTarget]?.label}` : ""}`}
         </button>
 
         {lastSent && (
@@ -519,9 +664,9 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
         <div style={{ padding: 16, background: "rgba(56,189,248,0.03)", borderRadius: 12, border: "1px solid rgba(56,189,248,0.06)", fontSize: 13, color: "#475569", lineHeight: 1.7 }}>
           <strong style={{ color: "#64748b" }}>Hilfe:</strong><br />
           1. Schuh einschalten (roter Knopf unter der Fersenlasche)<br />
-          2. Auf &quot;Schuh verbinden&quot; klicken<br />
-          3. &quot;PRIMIGI LED&quot; in der Bluetooth-Liste auswählen<br />
-          4. Text eingeben und senden — wird beim Verbinden automatisch gesendet<br />
+          2. Auf &quot;Schuh verbinden&quot; klicken und &quot;PRIMIGI LED&quot; auswählen<br />
+          3. Für den zweiten Schuh nochmal &quot;Zweiten Schuh verbinden&quot; klicken<br />
+          4. Text eingeben und senden — bei &quot;Beide&quot; gehen die Daten an beide Schuhe<br />
           <br />
           <strong style={{ color: "#64748b" }}>iPhone / iPad:</strong>{" "}
           <a href="https://apps.apple.com/app/bluefy-web-ble-browser/id1492822055" target="_blank" rel="noopener noreferrer" style={{ color: "#38bdf8" }}>
