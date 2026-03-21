@@ -35,7 +35,7 @@ interface Shoe {
   id: string;
   label: string;
   char: BluetoothRemoteGATTCharacteristic;
-  flipped: boolean;
+  direction: 0 | 1 | 2 | 3; // 0=normal; try 1/2/3 for flip
 }
 
 // "all" = both shoes, 0 = shoe 1 only, 1 = shoe 2 only
@@ -166,7 +166,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       const service = await server.getPrimaryService(SERVICE_UUID);
       const char = await service.getCharacteristic(CHAR_UUID);
 
-      const newShoe: Shoe = { id: device.id, label, char, flipped: false };
+      const newShoe: Shoe = { id: device.id, label, char, direction: 0 };
       setShoes((prev) => [...prev, newShoe]);
 
       // Auto-send last text to this specific shoe
@@ -180,8 +180,10 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
     }
   }, [shoes]);
 
-  const toggleFlip = useCallback((id: string) => {
-    setShoes((prev) => prev.map((s) => s.id === id ? { ...s, flipped: !s.flipped } : s));
+  const cycleDirection = useCallback((id: string) => {
+    setShoes((prev) => prev.map((s) =>
+      s.id === id ? { ...s, direction: ((s.direction + 1) % 4) as 0 | 1 | 2 | 3 } : s
+    ));
   }, []);
 
   const disconnectShoe = useCallback((id: string) => {
@@ -200,7 +202,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       try {
         await Promise.all(
           targetShoes.map((shoe) =>
-            sendTextToShoe(shoe.char, raw, shoe.flipped ? 1 : 0)
+            sendTextToShoe(shoe.char, raw, shoe.direction)
           )
         );
         setLastSent(raw);
@@ -408,16 +410,17 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
                 >
                   <span style={{ color: "#4ade80", fontSize: 13, fontWeight: 600 }}>🟢 {shoe.label}</span>
                   <button
-                    onClick={() => toggleFlip(shoe.id)}
-                    title={shoe.flipped ? "Normal (nicht gespiegelt)" : "Spiegeln (Schrift steht Kopf)"}
+                    onClick={() => cycleDirection(shoe.id)}
+                    title="Richtung wechseln (0–3 testen bis Text korrekt angezeigt wird)"
                     style={{
-                      background: shoe.flipped ? "rgba(251,191,36,0.15)" : "rgba(56,189,248,0.08)",
-                      border: `1px solid ${shoe.flipped ? "rgba(251,191,36,0.4)" : "rgba(56,189,248,0.2)"}`,
-                      borderRadius: 6, color: shoe.flipped ? "#fbbf24" : "#475569",
-                      cursor: "pointer", fontSize: 11, padding: "2px 7px", fontWeight: 600,
+                      background: shoe.direction !== 0 ? "rgba(251,191,36,0.15)" : "rgba(56,189,248,0.06)",
+                      border: `1px solid ${shoe.direction !== 0 ? "rgba(251,191,36,0.4)" : "rgba(56,189,248,0.15)"}`,
+                      borderRadius: 6, color: shoe.direction !== 0 ? "#fbbf24" : "#64748b",
+                      cursor: "pointer", fontSize: 11, padding: "2px 8px", fontWeight: 700,
+                      fontFamily: "monospace",
                     }}
                   >
-                    {shoe.flipped ? "↕ AN" : "↕"}
+                    ↕{shoe.direction}
                   </button>
                   <button
                     onClick={() => disconnectShoe(shoe.id)}
