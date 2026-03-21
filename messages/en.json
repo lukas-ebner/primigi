@@ -5,7 +5,7 @@
     "ogTitle": "Primigi App for iPhone & Mac — Program LED Infinity Light Shoes",
     "ogDescription": "Web app to program the LED scrolling text on Primigi Infinity Light kids' shoes. The Primigi Lights App is Android-only — our alternative works on iPhone, iPad, Mac and Windows."
   },
-  "nav": { "cta": "Get the app — €3" },
+  "nav": { "cta": "Get the app — €1.99" },
   "iphone": {
     "title": "iPhone / iPad Users",
     "desc": "Safari doesn't support Bluetooth. Download the free Bluefy app once and open primigi.dev inside it.",
@@ -20,7 +20,7 @@
     "inputPlaceholder": "Type your text here..."
   },
   "cta": {
-    "button": "Get the app — €3",
+    "button": "Get the app — €1.99",
     "subtext": "One-time payment. No subscription. Works in the browser on all devices.",
     "payment": "Payment via Stripe. Available immediately after purchase.",
     "ssl": "SSL encrypted",
@@ -56,7 +56,7 @@
     "f3desc": "We analysed the Bluetooth protocol and built our own, better app.",
     "f3icon": "🔧",
     "f4title": "Instant after purchase",
-    "f4desc": "One-time payment of €3, no subscription. Instant access. Works forever.",
+    "f4desc": "One-time payment of €1.99, no subscription. Instant access. Works forever.",
     "f4icon": "⚡",
     "f5title": "Dead simple to use",
     "f5desc": "Type text, press send. No technical knowledge required.",

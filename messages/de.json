@@ -6,7 +6,7 @@
     "ogDescription": "Web-App zum Programmieren der LED-Laufschrift auf Primigi Infinity Light Kinderschuhen. Die Primigi Lights App gibt es nur für Android — unsere Alternative funktioniert auf iPhone, iPad, Mac und Windows."
   },
   "nav": {
-    "cta": "App holen — 3 €"
+    "cta": "App holen — 1,99 €"
   },
   "iphone": {
     "title": "iPhone / iPad Nutzer",
@@ -22,7 +22,7 @@
     "inputPlaceholder": "Dein Text hier eingeben..."
   },
   "cta": {
-    "button": "App herunterladen — 3 €",
+    "button": "App herunterladen — 1,99 €",
     "subtext": "Einmalzahlung. Kein Abo. Läuft im Browser auf allen Geräten.",
     "payment": "Zahlung über Stripe. Sofort verfügbar nach Kauf.",
     "ssl": "SSL-verschlüsselt",
@@ -58,7 +58,7 @@
     "f3desc": "Wir haben das Bluetooth-Protokoll analysiert und eine eigene, bessere App gebaut.",
     "f3icon": "🔧",
     "f4title": "Sofort nach Kauf",
-    "f4desc": "Einmalzahlung von 3 €, kein Abo. Sofortiger Zugang. Funktioniert dauerhaft.",
+    "f4desc": "Einmalzahlung von 1,99 €, kein Abo. Sofortiger Zugang. Funktioniert dauerhaft.",
     "f4icon": "⚡",
     "f5title": "Kinderleichte Bedienung",
     "f5desc": "Text eingeben, auf Senden drücken. Keine technischen Kenntnisse erforderlich.",

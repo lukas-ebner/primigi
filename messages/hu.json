@@ -5,7 +5,7 @@
     "ogTitle": "Primigi alkalmazás iPhone-ra és Mac-re — LED Infinity Light cipő programozása",
     "ogDescription": "Webalkalmazás a Primigi Infinity Light gyerekcipők LED feliratának programozásához. A Primigi Lights csak Androidon működik — a mi alternatívánk iPhone-on, iPaden, Macen és Windowson is."
   },
-  "nav": { "cta": "Alkalmazás letöltése — 3 €" },
+  "nav": { "cta": "Alkalmazás letöltése — 1,99 €" },
   "iphone": {
     "title": "iPhone / iPad felhasználók",
     "desc": "A Safari nem támogatja a Bluetooth-t. Töltsd le egyszer az ingyenes Bluefy alkalmazást, és nyisd meg benne a primigi.dev oldalt.",
@@ -20,7 +20,7 @@
     "inputPlaceholder": "Írd be a szövegedet..."
   },
   "cta": {
-    "button": "Alkalmazás letöltése — 3 €",
+    "button": "Alkalmazás letöltése — 1,99 €",
     "subtext": "Egyszeri fizetés. Nincs előfizetés. Böngészőben működik minden eszközön.",
     "payment": "Fizetés Stripe-on keresztül. Azonnal elérhető a vásárlás után.",
     "ssl": "SSL titkosítás",
@@ -56,7 +56,7 @@
     "f3desc": "Elemeztük a Bluetooth protokollt és saját, jobb alkalmazást építettünk.",
     "f3icon": "🔧",
     "f4title": "Azonnal a vásárlás után",
-    "f4desc": "Egyszeri 3 € fizetés, nincs előfizetés. Azonnali hozzáférés. Örökké működik.",
+    "f4desc": "Egyszeri 1,99 € fizetés, nincs előfizetés. Azonnali hozzáférés. Örökké működik.",
     "f4icon": "⚡",
     "f5title": "Gyerekjáték a használata",
     "f5desc": "Írd be a szöveget, nyomj küldés gombot. Nem szükséges műszaki tudás.",

@@ -14,7 +14,7 @@ export async function POST() {
             name: "Primigi LED App",
             description: "Lifetime-Zugang zur Primigi LED Web-App",
           },
-          unit_amount: 300,
+          unit_amount: 199,
         },
         quantity: 1,
       },
