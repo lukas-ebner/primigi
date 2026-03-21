@@ -124,6 +124,21 @@ export default function LandingPage() {
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <LanguageSwitcher />
           <a
+            href="/tool"
+            style={{
+              color: "#94a3b8",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+              padding: "8px 14px",
+              borderRadius: 8,
+              border: "1px solid rgba(148,163,184,0.2)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Login
+          </a>
+          <a
             href="#download"
             style={{
               background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
@@ -134,6 +149,7 @@ export default function LandingPage() {
               fontSize: 14,
               textDecoration: "none",
               letterSpacing: 0.5,
+              whiteSpace: "nowrap",
             }}
           >
             {t("nav.cta")}
