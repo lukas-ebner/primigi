@@ -15,6 +15,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ valid: false, error: "Ungültiger Code — bitte 6 Zeichen eingeben" });
   }
 
+  // Admin bypass via ADMIN_CODE env variable
+  const adminCode = process.env.ADMIN_CODE?.toUpperCase();
+  if (adminCode && normalized === adminCode) {
+    const token = generateToken("admin-" + adminCode);
+    return NextResponse.json({ valid: true, token, sessionId: "admin-" + adminCode });
+  }
+
   try {
     const results = await stripe.checkout.sessions.search({
       query: `metadata["code"]:"${normalized}"`,
