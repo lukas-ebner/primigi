@@ -35,7 +35,7 @@ const MODELS = [
 const FAQ = [
   {
     q: "Funktioniert die Primigi App auf dem iPhone?",
-    a: 'Die original "Primigi Lights" App ist nur für Android verfügbar. Unsere App funktioniert direkt im Browser — auf iPhone, iPad, Mac, Windows und jedem anderen Gerät mit Bluetooth.',
+    a: 'Ja — aber Safari unterstützt kein Web Bluetooth. Für iPhone und iPad einfach die kostenlose App "Bluefy – Web BLE Browser" aus dem App Store laden, dort primigi.dev öffnen, und alles funktioniert genauso wie auf Android oder Mac.',
   },
   {
     q: "Wie verbinde ich die Schuhe mit der App?",
@@ -218,8 +218,16 @@ export default function LandingPage() {
             lineHeight: 1.6,
           }}
         >
-          Funktioniert auf iPhone, Mac & Windows. Kein Android nötig. Einfach
-          im Browser öffnen, verbinden, Text eingeben — fertig.
+          Mac & Windows: direkt im Browser. iPhone & iPad: einmal die kostenlose{" "}
+          <a
+            href="https://apps.apple.com/app/bluefy-web-ble-browser/id1492822055"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#38bdf8", textDecoration: "underline" }}
+          >
+            Bluefy App
+          </a>{" "}
+          installieren — dann genauso einfach.
         </p>
 
         {/* Shoe Image */}
@@ -340,6 +348,49 @@ export default function LandingPage() {
       </section>
 
       {/* CTA */}
+      {/* iPhone callout */}
+      <section style={{ padding: "0 24px 8px", maxWidth: 560, margin: "0 auto" }}>
+        <div style={{
+          background: "rgba(56,189,248,0.06)",
+          border: "1px solid rgba(56,189,248,0.2)",
+          borderRadius: 14,
+          padding: "16px 20px",
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          flexWrap: "wrap",
+        }}>
+          <span style={{ fontSize: 28 }}>📱</span>
+          <div style={{ flex: 1, minWidth: 200 }}>
+            <p style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0", margin: "0 0 4px" }}>
+              iPhone / iPad Nutzer
+            </p>
+            <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, lineHeight: 1.5 }}>
+              Safari unterstützt kein Bluetooth. Lade einmalig die kostenlose{" "}
+              <strong style={{ color: "#e2e8f0" }}>Bluefy App</strong> und öffne dann primigi.dev darin.
+            </p>
+          </div>
+          <a
+            href="https://apps.apple.com/app/bluefy-web-ble-browser/id1492822055"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: "rgba(56,189,248,0.15)",
+              border: "1px solid rgba(56,189,248,0.3)",
+              color: "#38bdf8",
+              borderRadius: 8,
+              padding: "8px 16px",
+              fontSize: 13,
+              fontWeight: 700,
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Im App Store →
+          </a>
+        </div>
+      </section>
+
       <section
         id="download"
         style={{
@@ -849,11 +900,10 @@ export default function LandingPage() {
           <p>
             Wenn Sie nach „Primigi App iPhone", „Primigi App Mac", „Primigi App Download"
             oder „Primigi Lights App Apple" suchen, sind Sie hier richtig.
-            Apple-Geräte unterstützen Web Bluetooth, was bedeutet, dass unsere
-            Primigi App direkt im Safari- oder Chrome-Browser läuft. Kein Umweg über
-            Android-Emulatoren, kein Ausleihen eines Android-Geräts — einfach
-            primigi.dev öffnen und loslegen. Die Primigi App für iPhone funktioniert
-            genauso zuverlässig wie die originale Android-Version.
+            Auf Mac funktioniert unsere App direkt in Chrome oder Edge. Auf iPhone und iPad
+            lädt man einmalig die kostenlose App „Bluefy – Web BLE Browser" aus dem App Store
+            und öffnet dort primigi.dev — dann läuft alles genauso wie auf Android oder Mac.
+            Kein Umweg über Android-Emulatoren, kein Ausleihen eines Fremd-Geräts.
           </p>
 
           <h3
