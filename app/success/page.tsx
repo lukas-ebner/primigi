@@ -47,6 +47,7 @@ export default async function SuccessPage({
   }
 
   const token = generateToken(sessionId);
+  const code = (session.metadata?.code ?? "").toUpperCase();
 
-  return <SuccessClient token={token} sessionId={sessionId} />;
+  return <SuccessClient token={token} sessionId={sessionId} code={code} />;
 }

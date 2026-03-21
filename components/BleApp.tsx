@@ -97,9 +97,9 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       .catch(() => setAuthLoading(false));
   }, [requireAuth]);
 
-  // Login via access code (Stripe session ID)
+  // Login via 6-char access code
   const handleAccessCode = useCallback(async () => {
-    const code = accessCode.trim();
+    const code = accessCode.trim().toUpperCase();
     if (!code) return;
     setAccessChecking(true);
     setAccessError("");
@@ -107,15 +107,16 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       const res = await fetch(`/api/verify-session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId: code }),
+        body: JSON.stringify({ code }),
       });
       const d = await res.json();
       if (d.valid && d.token) {
         localStorage.setItem("primigi_token", d.token);
-        localStorage.setItem("primigi_session", code);
+        localStorage.setItem("primigi_session", d.sessionId);
+        localStorage.setItem("primigi_code", code);
         setIsAuthed(true);
       } else {
-        setAccessError("Ungültiger Code. Bitte prüfe deinen Zugangscode.");
+        setAccessError(d.error ?? "Ungültiger Code. Bitte prüfe deinen Zugangscode.");
       }
     } catch {
       setAccessError("Verbindungsfehler. Bitte versuche es erneut.");
@@ -277,33 +278,37 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
         <div style={{ maxWidth: 440, margin: "0 auto", padding: "64px 24px" }}>
           <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8, color: "#e2e8f0" }}>Zugangscode eingeben</h1>
           <p style={{ color: "#64748b", marginBottom: 32, fontSize: 15, lineHeight: 1.6 }}>
-            Gib deinen Zugangscode ein — du hast ihn nach dem Kauf erhalten.
+            Gib deinen 6-stelligen Code ein — du hast ihn nach dem Kauf erhalten.
           </p>
           <div style={{ background: "#0f0f1a", borderRadius: 16, padding: 24, border: "1px solid rgba(56,189,248,0.1)" }}>
             <input
               type="text"
               value={accessCode}
-              onChange={(e) => setAccessCode(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleAccessCode()}
-              placeholder="cs_live_..."
+              onChange={(e) => setAccessCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6))}
+              onKeyDown={(e) => e.key === "Enter" && accessCode.length === 6 && handleAccessCode()}
+              placeholder="ABC123"
+              maxLength={6}
+              autoComplete="off"
+              autoCapitalize="characters"
               style={{
-                width: "100%", padding: "12px 16px", borderRadius: 10,
+                width: "100%", padding: "16px", borderRadius: 10,
                 border: `1px solid ${accessError ? "rgba(248,113,113,0.4)" : "rgba(56,189,248,0.2)"}`,
-                background: "rgba(56,189,248,0.04)", color: "#e2e8f0",
-                fontSize: 15, fontFamily: "'Space Mono', monospace",
+                background: "rgba(56,189,248,0.04)", color: "#38bdf8",
+                fontSize: 32, fontFamily: "'Space Mono', monospace",
+                fontWeight: 700, letterSpacing: "0.3em", textAlign: "center",
                 outline: "none", boxSizing: "border-box", marginBottom: 12,
               }}
             />
             {accessError && <p style={{ color: "#f87171", fontSize: 13, marginBottom: 12 }}>{accessError}</p>}
             <button
               onClick={handleAccessCode}
-              disabled={accessChecking || !accessCode.trim()}
+              disabled={accessChecking || accessCode.length !== 6}
               style={{
                 width: "100%", padding: "14px", borderRadius: 10, border: "none",
                 background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
                 color: "#08080f", fontWeight: 700, fontSize: 16,
-                cursor: accessChecking || !accessCode.trim() ? "not-allowed" : "pointer",
-                opacity: accessChecking || !accessCode.trim() ? 0.6 : 1,
+                cursor: accessChecking || accessCode.length !== 6 ? "not-allowed" : "pointer",
+                opacity: accessChecking || accessCode.length !== 6 ? 0.6 : 1,
               }}
             >
               {accessChecking ? "Prüfe..." : "Zugang freischalten"}
@@ -311,7 +316,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
           </div>
           <p style={{ textAlign: "center", marginTop: 20, fontSize: 13, color: "#334155" }}>
             Noch kein Zugangscode?{" "}
-            <a href="/" style={{ color: "#38bdf8", textDecoration: "none" }}>App kaufen — 3 €</a>
+            <a href="/" style={{ color: "#38bdf8", textDecoration: "none" }}>App kaufen — 1,99 €</a>
           </p>
         </div>
       </div>

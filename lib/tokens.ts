@@ -1,5 +1,12 @@
 import crypto from "crypto";
 
+const CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+export function generateShortCode(): string {
+  const bytes = crypto.randomBytes(6);
+  return Array.from(bytes).map((b) => CODE_CHARS[b % CODE_CHARS.length]).join("");
+}
+
 export function generateToken(sessionId: string): string {
   const secret = process.env.APP_SECRET;
   if (!secret) throw new Error("APP_SECRET is not set");
