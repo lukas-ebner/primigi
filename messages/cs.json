@@ -1,11 +1,14 @@
 {
   "meta": {
-    "title": "Primigi aplikace pro iPhone a Mac — Programování LED bot | primigi.dev",
+    "title": "PRIMIGI LED - Ovládejte boty Primigi svých dětí pomocí webové aplikace",
     "description": "Aplikace Primigi Lights je dostupná pouze pro Android. Naše webová aplikace funguje na iPhone, iPad, Mac a Windows. Naprogramujte LED nápis na botách Primigi Infinity Light — přímo v prohlížeči.",
     "ogTitle": "Primigi aplikace pro iPhone a Mac — Programování LED bot Infinity Light",
     "ogDescription": "Webová aplikace pro programování LED nápisu na dětských botách Primigi Infinity Light. Primigi Lights funguje pouze na Androidu — naše alternativa funguje na iPhone, iPad, Mac a Windows."
   },
-  "nav": { "cta": "Stáhnout aplikaci — 1,99 €", "start": "Spustit aplikaci" },
+  "nav": {
+    "cta": "Stáhnout aplikaci — 1,99 €",
+    "start": "Spustit aplikaci"
+  },
   "start": {
     "returning": {
       "title": "Vítej zpět",

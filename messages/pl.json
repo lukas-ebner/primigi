@@ -1,11 +1,14 @@
 {
   "meta": {
-    "title": "Aplikacja Primigi na iPhone i Mac — Programuj buty LED | primigi.dev",
+    "title": "PRIMIGI LED - Steruj butami Primigi swoich dzieci za pomocą aplikacji Web",
     "description": "Aplikacja Primigi Lights jest tylko na Androida. Nasza aplikacja webowa działa na iPhone, iPad, Mac i Windows. Programuj napis LED na butach Primigi Infinity Light — bezpośrednio w przeglądarce.",
     "ogTitle": "Aplikacja Primigi na iPhone i Mac — Programuj buty LED Infinity Light",
     "ogDescription": "Aplikacja webowa do programowania napisu LED na butach dziecięcych Primigi Infinity Light. Primigi Lights działa tylko na Androida — nasza alternatywa działa na iPhone, iPad, Mac i Windows."
   },
-  "nav": { "cta": "Pobierz aplikację — 1,99 €", "start": "Uruchom aplikację" },
+  "nav": {
+    "cta": "Pobierz aplikację — 1,99 €",
+    "start": "Uruchom aplikację"
+  },
   "start": {
     "returning": {
       "title": "Witaj z powrotem",

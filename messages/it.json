@@ -1,11 +1,14 @@
 {
   "meta": {
-    "title": "Primigi App per iPhone e Mac — Programma le scarpe LED | primigi.dev",
+    "title": "PRIMIGI LED - Controlla le scarpe Primigi dei tuoi figli con la Web App",
     "description": "L'app Primigi Lights è disponibile solo per Android. La nostra web-app funziona su iPhone, iPad, Mac e Windows. Programma la scritta LED delle scarpe Primigi Infinity Light — direttamente nel browser.",
     "ogTitle": "Primigi App per iPhone e Mac — Programma le scarpe LED Infinity Light",
     "ogDescription": "Web-app per programmare la scritta LED delle scarpe Primigi Infinity Light. L'app Primigi Lights esiste solo per Android — la nostra alternativa funziona su iPhone, iPad, Mac e Windows."
   },
-  "nav": { "cta": "Scarica l'app — 1,99 €", "start": "Avvia l'app" },
+  "nav": {
+    "cta": "Scarica l'app — 1,99 €",
+    "start": "Avvia l'app"
+  },
   "start": {
     "returning": {
       "title": "Bentornato",

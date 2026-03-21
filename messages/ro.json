@@ -1,11 +1,14 @@
 {
   "meta": {
-    "title": "Aplicația Primigi pentru iPhone și Mac — Programează pantofii LED | primigi.dev",
+    "title": "PRIMIGI LED - Controlează pantofii Primigi ai copiilor tăi cu aplicația Web",
     "description": "Aplicația Primigi Lights este disponibilă doar pentru Android. Aplicația noastră web funcționează pe iPhone, iPad, Mac și Windows. Programează textul LED al pantofilor Primigi Infinity Light — direct în browser.",
     "ogTitle": "Aplicația Primigi pentru iPhone și Mac — Programează pantofii LED Infinity Light",
     "ogDescription": "Aplicație web pentru programarea textului LED al pantofilor Primigi Infinity Light. Primigi Lights funcționează doar pe Android — alternativa noastră funcționează pe iPhone, iPad, Mac și Windows."
   },
-  "nav": { "cta": "Descarcă aplicația — 1,99 €", "start": "Lansează aplicația" },
+  "nav": {
+    "cta": "Descarcă aplicația — 1,99 €",
+    "start": "Lansează aplicația"
+  },
   "start": {
     "returning": {
       "title": "Bine ai revenit",

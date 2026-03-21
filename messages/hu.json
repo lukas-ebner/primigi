@@ -1,11 +1,14 @@
 {
   "meta": {
-    "title": "Primigi alkalmazás iPhone-ra és Mac-re — LED cipő programozása | primigi.dev",
+    "title": "PRIMIGI LED - Irányítsd gyermekeid Primigi cipőit a webalkalmazással",
     "description": "A Primigi Lights alkalmazás csak Androidra érhető el. A mi webalkalmazásunk iPhone-on, iPaden, Macen és Windowson is működik. Programozd a Primigi Infinity Light cipők LED feliratát — közvetlenül a böngészőből.",
     "ogTitle": "Primigi alkalmazás iPhone-ra és Mac-re — LED Infinity Light cipő programozása",
     "ogDescription": "Webalkalmazás a Primigi Infinity Light gyerekcipők LED feliratának programozásához. A Primigi Lights csak Androidon működik — a mi alternatívánk iPhone-on, iPaden, Macen és Windowson is."
   },
-  "nav": { "cta": "Alkalmazás letöltése — 1,99 €", "start": "Alkalmazás indítása" },
+  "nav": {
+    "cta": "Alkalmazás letöltése — 1,99 €",
+    "start": "Alkalmazás indítása"
+  },
   "start": {
     "returning": {
       "title": "Üdvözlünk vissza",

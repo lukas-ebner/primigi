@@ -1,11 +1,14 @@
 {
   "meta": {
-    "title": "Primigi приложение за iPhone и Mac — Програмирай LED обувки | primigi.dev",
+    "title": "PRIMIGI LED - Управлявай обувките Primigi на децата си с уеб приложението",
     "description": "Приложението Primigi Lights е само за Android. Нашето уеб приложение работи на iPhone, iPad, Mac и Windows. Програмирай LED надписа на обувките Primigi Infinity Light — директно в браузъра.",
     "ogTitle": "Primigi приложение за iPhone и Mac — Програмирай LED обувки Infinity Light",
     "ogDescription": "Уеб приложение за програмиране на LED надписа на детски обувки Primigi Infinity Light. Primigi Lights работи само на Android — нашата алтернатива работи на iPhone, iPad, Mac и Windows."
   },
-  "nav": { "cta": "Вземи приложението — 1,99 €", "start": "Стартирай приложението" },
+  "nav": {
+    "cta": "Вземи приложението — 1,99 €",
+    "start": "Стартирай приложението"
+  },
   "start": {
     "returning": {
       "title": "Добре дошъл отново",
