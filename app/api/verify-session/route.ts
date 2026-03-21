@@ -23,12 +23,16 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const results = await stripe.checkout.sessions.search({
+    // stripe-node v16 types don't expose .search() on checkout sessions,
+    // but the underlying Stripe API supports it at runtime
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const results = await (stripe.checkout.sessions as any).search({
       query: `metadata["code"]:"${normalized}"`,
       limit: 5,
     });
 
-    const paid = results.data.find((s) => s.payment_status === "paid");
+    const paid = (results.data as { id: string; payment_status: string }[])
+      .find((s) => s.payment_status === "paid");
     if (!paid) {
       return NextResponse.json({ valid: false, error: "Code nicht gefunden oder Zahlung nicht abgeschlossen" });
     }
