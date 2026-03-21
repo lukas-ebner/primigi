@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Aplicația Primigi pentru iPhone și Mac — Programează pantofii LED | primigi.dev",
+    "description": "Aplicația Primigi Lights este disponibilă doar pentru Android. Aplicația noastră web funcționează pe iPhone, iPad, Mac și Windows. Programează textul LED al pantofilor Primigi Infinity Light — direct în browser.",
+    "ogTitle": "Aplicația Primigi pentru iPhone și Mac — Programează pantofii LED Infinity Light",
+    "ogDescription": "Aplicație web pentru programarea textului LED al pantofilor Primigi Infinity Light. Primigi Lights funcționează doar pe Android — alternativa noastră funcționează pe iPhone, iPad, Mac și Windows."
+  },
+  "nav": { "cta": "Descarcă aplicația — 3 €" },
+  "iphone": {
+    "title": "Utilizatori iPhone / iPad",
+    "desc": "Safari nu suportă Bluetooth. Descarcă o dată aplicația gratuită Bluefy și deschide primigi.dev în ea.",
+    "cta": "Pe App Store →"
+  },
+  "hero": {
+    "tagline": "Aplicația pe care Primigi a uitat să o facă",
+    "titleStart": "Programează",
+    "titleHighlight": "textul LED",
+    "titleEnd": "al pantofilor tăi Primigi",
+    "previewLabel": "↓ Previzualizare live a textului LED",
+    "inputPlaceholder": "Scrie textul tău aici..."
+  },
+  "cta": {
+    "button": "Descarcă aplicația — 3 €",
+    "subtext": "Plată unică. Fără abonament. Funcționează în browser pe toate dispozitivele.",
+    "payment": "Plată prin Stripe. Disponibil imediat după cumpărare.",
+    "ssl": "Criptat SSL",
+    "devices": "Toate dispozitivele",
+    "instant": "Acces imediat",
+    "ble": "Bluetooth LE"
+  },
+  "steps": {
+    "title": "Atât de simplu",
+    "s1title": "Pornește pantoful",
+    "s1desc": "Apasă butonul roșu de sub călcâi până se aprind LED-urile.",
+    "s2title": "Deschide aplicația",
+    "s2desc": "Accesează primigi.dev în browser — pe telefon, tabletă sau computer.",
+    "s3title": "Conectează",
+    "s3desc": "Apasă \"Conectează\". Pantoful apare ca \"PRIMIGI LED\".",
+    "s4title": "Introdu textul",
+    "s4desc": "Scrie mesajul dorit, trimite — și fii uimit."
+  },
+  "models": {
+    "title": "Modele compatibile",
+    "subtitle": "Toate modelele Primigi Infinity Light cu display LED programabil"
+  },
+  "features": {
+    "title": "De ce această aplicație?",
+    "subtitle": "Aplicația originală Primigi Lights există doar pentru Android — și este greu de găsit. Soluția noastră funcționează oriunde.",
+    "f1title": "Fără Android",
+    "f1desc": "Funcționează pe iPhone, iPad, Mac, Windows — oriunde rulează un browser modern cu Bluetooth.",
+    "f1icon": "📱",
+    "f2title": "Fără instalare",
+    "f2desc": "Aplicație web în browser. Fără App Store, fără Play Store, fără descărcare.",
+    "f2icon": "🌐",
+    "f3title": "Inginerie inversă",
+    "f3desc": "Am analizat protocolul Bluetooth și am construit o aplicație proprie, mai bună.",
+    "f3icon": "🔧",
+    "f4title": "Acces imediat",
+    "f4desc": "Plată unică de 3 €, fără abonament. Acces imediat. Funcționează permanent.",
+    "f4icon": "⚡",
+    "f5title": "Foarte ușor de folosit",
+    "f5desc": "Scrie textul, apasă trimite. Nu sunt necesare cunoștințe tehnice.",
+    "f5icon": "👶",
+    "f6title": "Ghid în română",
+    "f6desc": "Complet în română. Cu instrucțiuni pas cu pas. Suport prin email.",
+    "f6icon": "🇷🇴"
+  },
+  "faq": {
+    "title": "Întrebări frecvente",
+    "q1": "Funcționează aplicația Primigi pe iPhone?",
+    "a1": "Da — dar Safari nu suportă Web Bluetooth. Pentru iPhone și iPad, descarcă o dată aplicația gratuită \"Bluefy – Web BLE Browser\" din App Store, deschide primigi.dev în ea și totul funcționează.",
+    "q2": "Cum conectez pantofii la aplicație?",
+    "a2": "Pornește pantoful (butonul roșu de sub călcâi), deschide aplicația în browser și apasă \"Conectează\". Pantoful apare ca \"PRIMIGI LED\".",
+    "q3": "Ce texte pot scrie pe pantofi?",
+    "a3": "Orice text cu litere, cifre și caractere speciale. Textul defilează ca un banner LED pe display-ul de la arici.",
+    "q4": "Trebuie să instalez aplicația?",
+    "a4": "Nu! Aplicația noastră rulează direct în browser prin Web Bluetooth. Fără App Store, fără descărcare, fără instalare.",
+    "q5": "Funcționează și fără dispozitiv Android?",
+    "a5": "Da! Exact pentru asta a fost creată această aplicație. Mac, PC Windows, iPhone (cu Bluefy), iPad, Android.",
+    "q6": "Cum se încarcă pantofii LED?",
+    "a6": "Pantofii se încarcă prin cablul USB inclus. O încărcare completă durează aproximativ 4–6 ore.",
+    "q7": "Ce pantofi Primigi sunt compatibili?",
+    "a7": "Toate modelele Primigi din seria 'Infinity Light' — recunoscute după display-ul LED de la arici și butonul roșu de sub călcâi.",
+    "q8": "Unde găsesc descărcarea aplicației Primigi Lights?",
+    "a8": "Aplicația originală este aproape de negăsit în Play Store. Aplicația noastră web la primigi.dev este alternativa de încredere.",
+    "q9": "Cum se potrivesc pantofii Primigi Infinity Light?",
+    "a9": "Normal sau ușor strâmți — comandă o jumătate de număr mai mare. Mărimi EU 24–39."
+  },
+  "seo": {
+    "h1": "Programează pantofii Primigi Infinity Light — alternativa la aplicația Primigi Lights",
+    "p1": "Colecția Primigi Infinity Light încântă copiii cu textul LED programabil. Aplicația oficială \"Primigi Lights\" există doar pentru Android și este aproape imposibil de găsit în Play Store. Utilizatorii de iPhone, iPad și Mac nu aveau o soluție.",
+    "p2": "Am avut aceeași problemă și am decis să construim singuri aplicația. Prin inginerie inversă a protocolului Bluetooth, am creat o aplicație web care rulează în browser — indiferent dacă folosești iPhone (cu Bluefy), Mac sau Windows.",
+    "h2": "Aplicația Primigi pentru iPhone și Mac",
+    "p3": "Pe Mac, aplicația noastră funcționează direct în Chrome sau Edge. Pe iPhone, descarcă o dată aplicația gratuită \"Bluefy\" din App Store și deschide primigi.dev în ea.",
+    "h3": "Aplicația Primigi Infinity Light pentru Windows",
+    "p4": "Chrome și Edge suportă complet Web Bluetooth. Dacă PC-ul tău are Bluetooth, poți programa pantofii direct de pe computer.",
+    "h4": "Ce este aplicația Primigi Lights?",
+    "p5": "Primigi a lansat aplicația \"Primigi Lights\" pentru Android — în Play Store a dispărut practic. Pentru iPhone nu a existat niciodată. primigi.dev umple acest gol.",
+    "h5": "Cum funcționează pantofii LED Primigi",
+    "p6": "Pe arici se află un display cu matrice LED. Apasă butonul roșu, pantoful se aprinde. Portul USB încarcă doar bateria — datele trec exclusiv prin Bluetooth.",
+    "h6": "Pantofi LED pentru copii — modele compatibile",
+    "p7": "PIL 2959x (băieți), PIL 2969x (fete), PIL 2961x (High-Top), PIL 2963x (Velcro Low). Mărimi EU 24–39. Disponibili pe Amazon, Spartoo și în magazinul online Primigi.",
+    "h7": "Cum se potrivesc pantofii Primigi?",
+    "p8": "Ușor strâmți. Comandă o jumătate de număr mai mare. Bateria ține 4–6 ore, se încarcă prin cablu USB."
+  },
+  "footer": {
+    "disclaimer": "Nu este afiliat cu Primigi S.p.A. sau IMAC S.p.A. Acesta este un instrument independent.",
+    "trademark": "\"Primigi\" și \"Infinity Light\" sunt mărci înregistrate ale proprietarilor lor.",
+    "copyright": "© 2026 primigi.dev — Regensburg, Germania"
+  }
+}

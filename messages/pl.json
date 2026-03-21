@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Aplikacja Primigi na iPhone i Mac — Programuj buty LED | primigi.dev",
+    "description": "Aplikacja Primigi Lights jest tylko na Androida. Nasza aplikacja webowa działa na iPhone, iPad, Mac i Windows. Programuj napis LED na butach Primigi Infinity Light — bezpośrednio w przeglądarce.",
+    "ogTitle": "Aplikacja Primigi na iPhone i Mac — Programuj buty LED Infinity Light",
+    "ogDescription": "Aplikacja webowa do programowania napisu LED na butach dziecięcych Primigi Infinity Light. Primigi Lights działa tylko na Androida — nasza alternatywa działa na iPhone, iPad, Mac i Windows."
+  },
+  "nav": { "cta": "Pobierz aplikację — 3 €" },
+  "iphone": {
+    "title": "Użytkownicy iPhone / iPad",
+    "desc": "Safari nie obsługuje Bluetooth. Pobierz raz darmową aplikację Bluefy i otwórz w niej primigi.dev.",
+    "cta": "W App Store →"
+  },
+  "hero": {
+    "tagline": "Aplikacja, o której Primigi zapomniało",
+    "titleStart": "Zaprogramuj",
+    "titleHighlight": "napis LED",
+    "titleEnd": "na swoich butach Primigi",
+    "previewLabel": "↓ Podgląd napisu LED na żywo",
+    "inputPlaceholder": "Wpisz swój tekst tutaj..."
+  },
+  "cta": {
+    "button": "Pobierz aplikację — 3 €",
+    "subtext": "Jednorazowa płatność. Bez subskrypcji. Działa w przeglądarce na wszystkich urządzeniach.",
+    "payment": "Płatność przez Stripe. Dostępne natychmiast po zakupie.",
+    "ssl": "Szyfrowanie SSL",
+    "devices": "Wszystkie urządzenia",
+    "instant": "Natychmiastowy dostęp",
+    "ble": "Bluetooth LE"
+  },
+  "steps": {
+    "title": "Tak to działa",
+    "s1title": "Włącz but",
+    "s1desc": "Naciśnij czerwony przycisk pod zakładką pięty, aż zaświecą się diody LED.",
+    "s2title": "Otwórz aplikację",
+    "s2desc": "Wejdź na primigi.dev w przeglądarce — na telefonie, tablecie lub komputerze.",
+    "s3title": "Połącz",
+    "s3desc": "Kliknij \"Połącz\". But pojawia się jako \"PRIMIGI LED\".",
+    "s4title": "Wpisz tekst",
+    "s4desc": "Wpisz wybrany tekst, wyślij — i podziwiaj efekt."
+  },
+  "models": {
+    "title": "Kompatybilne modele",
+    "subtitle": "Wszystkie modele Primigi Infinity Light z programowalnym wyświetlaczem LED"
+  },
+  "features": {
+    "title": "Dlaczego ta aplikacja?",
+    "subtitle": "Oryginalna aplikacja Primigi Lights jest tylko na Androida — i trudno ją znaleźć. Nasze rozwiązanie działa wszędzie.",
+    "f1title": "Bez Androida",
+    "f1desc": "Działa na iPhone, iPad, Mac, Windows — wszędzie, gdzie działa nowoczesna przeglądarka z Bluetooth.",
+    "f1icon": "📱",
+    "f2title": "Bez instalacji",
+    "f2desc": "Aplikacja webowa w przeglądarce. Bez App Store, bez Play Store, bez pobierania.",
+    "f2icon": "🌐",
+    "f3title": "Inżynieria wsteczna",
+    "f3desc": "Zanalizowaliśmy protokół Bluetooth i zbudowaliśmy własną, lepszą aplikację.",
+    "f3icon": "🔧",
+    "f4title": "Dostęp od razu",
+    "f4desc": "Jednorazowa płatność 3 €, bez subskrypcji. Natychmiastowy dostęp. Działa na zawsze.",
+    "f4icon": "⚡",
+    "f5title": "Bardzo prosta obsługa",
+    "f5desc": "Wpisz tekst, naciśnij wyślij. Nie potrzebujesz wiedzy technicznej.",
+    "f5icon": "👶",
+    "f6title": "Instrukcja po polsku",
+    "f6desc": "W całości po polsku. Z instrukcją krok po kroku. Wsparcie przez e-mail.",
+    "f6icon": "🇵🇱"
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "q1": "Czy aplikacja Primigi działa na iPhone?",
+    "a1": "Tak — ale Safari nie obsługuje Web Bluetooth. Na iPhone i iPad pobierz raz darmową aplikację \"Bluefy – Web BLE Browser\" z App Store, otwórz w niej primigi.dev i wszystko działa.",
+    "q2": "Jak połączyć buty z aplikacją?",
+    "a2": "Włącz but (czerwony przycisk pod zakładką pięty), otwórz aplikację w przeglądarce i kliknij \"Połącz\". But pojawia się jako \"PRIMIGI LED\".",
+    "q3": "Jakie teksty mogę pisać na butach?",
+    "a3": "Dowolne teksty z literami, cyframi i znakami specjalnymi. Tekst przewija się jako napis LED na wyświetlaczu przy rzepie.",
+    "q4": "Czy muszę instalować aplikację?",
+    "a4": "Nie! Nasza aplikacja działa bezpośrednio w przeglądarce przez Web Bluetooth. Bez App Store, bez pobierania, bez instalacji.",
+    "q5": "Czy działa bez urządzenia z Androidem?",
+    "a5": "Tak! Właśnie dlatego ta aplikacja powstała. Mac, PC z Windows, iPhone (z Bluefy), iPad, Android.",
+    "q6": "Jak ładować buty LED?",
+    "a6": "Buty ładuje się przez dołączony kabel USB. Pełne ładowanie wystarcza na około 4–6 godzin.",
+    "q7": "Które buty Primigi są kompatybilne?",
+    "a7": "Wszystkie modele Primigi z serii 'Infinity Light' — rozpoznawalne po wyświetlaczu LED przy rzepie i czerwonym przycisku pod zakładką pięty.",
+    "q8": "Gdzie znaleźć pobieranie aplikacji Primigi Lights?",
+    "a8": "Oryginalna aplikacja jest prawie nieznajdowalna w Play Store. Nasza aplikacja webowa na primigi.dev jest niezawodną alternatywą.",
+    "q9": "Jak leżą buty Primigi Infinity Light?",
+    "a9": "Normalnie do lekko ciasno — zamów pół numeru większy. Rozmiary EU 24–39."
+  },
+  "seo": {
+    "h1": "Programowanie butów Primigi Infinity Light — alternatywa dla aplikacji Primigi Lights",
+    "p1": "Kolekcja Primigi Infinity Light zachwyca dzieci programowalnym napisem LED. Oficjalna aplikacja \"Primigi Lights\" jest tylko na Androida i prawie niedostępna w Play Store. Użytkownicy iPhone, iPad i Mac byli dotychczas bez rozwiązania.",
+    "p2": "Mieliśmy ten sam problem i postanowiliśmy zbudować aplikację sami. Dzięki inżynierii wstecznej protokołu Bluetooth powstała aplikacja webowa działająca w przeglądarce — na iPhone (z Bluefy), Mac lub Windows.",
+    "h2": "Aplikacja Primigi na iPhone i Mac",
+    "p3": "Na Mac nasza aplikacja działa bezpośrednio w Chrome lub Edge. Na iPhone pobierz raz darmową aplikację \"Bluefy\" z App Store i otwórz w niej primigi.dev.",
+    "h3": "Aplikacja Primigi Infinity Light dla Windows",
+    "p4": "Chrome i Edge w pełni obsługują Web Bluetooth. Jeśli Twój komputer ma Bluetooth, możesz programować buty bezpośrednio z komputera.",
+    "h4": "Czym jest aplikacja Primigi Lights?",
+    "p5": "Primigi wydało aplikację \"Primigi Lights\" na Androida — w Play Store praktycznie znikła. Na iPhone nigdy jej nie było. primigi.dev wypełnia tę lukę.",
+    "h5": "Jak działają buty LED Primigi",
+    "p6": "Na rzepie znajduje się wyświetlacz matrycowy LED. Wciśnij czerwony przycisk, but się zapala. Port USB ładuje tylko akumulator — dane przechodzą wyłącznie przez Bluetooth.",
+    "h6": "Buty LED dla dzieci — kompatybilne modele",
+    "p7": "PIL 2959x (chłopcy), PIL 2969x (dziewczynki), PIL 2961x (High-Top), PIL 2963x (Velcro Low). Rozmiary EU 24–39. Dostępne w Amazon, Spartoo i sklepie Primigi.",
+    "h7": "Jak leżą buty Primigi?",
+    "p8": "Raczej ciasno. Zamów pół numeru większy. Akumulator wytrzymuje 4–6 godzin, ładowanie przez kabel USB."
+  },
+  "footer": {
+    "disclaimer": "Niezwiązane z Primigi S.p.A. ani IMAC S.p.A. To niezależne narzędzie.",
+    "trademark": "\"Primigi\" i \"Infinity Light\" są zarejestrowanymi znakami towarowymi ich właścicieli.",
+    "copyright": "© 2026 primigi.dev — Ratyzbona, Niemcy"
+  }
+}

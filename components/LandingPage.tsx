@@ -1,77 +1,44 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import LEDDisplay from "./LEDDisplay";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-// Compatible models data
+// Compatible models data (technical, not translated)
 const MODELS = [
   {
-    name: "Infinity Light Sneaker (Jungen)",
-    colors: ["Blau", "Weiß", "Schwarz"],
+    name: "Infinity Light Sneaker (Boys)",
+    nameKey: "infinity_light_boys",
+    colors: ["Blue", "White", "Black"],
     sizes: "24–39",
     sku: "PIL 2959x",
   },
   {
-    name: "Infinity Light Sneaker (Mädchen)",
-    colors: ["Rosa", "Weiß", "Silber"],
+    name: "Infinity Light Sneaker (Girls)",
+    nameKey: "infinity_light_girls",
+    colors: ["Pink", "White", "Silver"],
     sizes: "24–39",
     sku: "PIL 2969x",
   },
   {
     name: "Infinity Light High-Top",
-    colors: ["Blau", "Schwarz"],
+    nameKey: "infinity_light_hightop",
+    colors: ["Blue", "Black"],
     sizes: "27–39",
     sku: "PIL 2961x",
   },
   {
     name: "Infinity Light Velcro Low",
-    colors: ["Weiß", "Navy"],
+    nameKey: "infinity_light_velcro",
+    colors: ["White", "Navy"],
     sizes: "24–35",
     sku: "PIL 2963x",
   },
 ];
 
-// FAQ data for SEO
-const FAQ = [
-  {
-    q: "Funktioniert die Primigi App auf dem iPhone?",
-    a: 'Ja — aber Safari unterstützt kein Web Bluetooth. Für iPhone und iPad einfach die kostenlose App "Bluefy – Web BLE Browser" aus dem App Store laden, dort primigi.dev öffnen, und alles funktioniert genauso wie auf Android oder Mac.',
-  },
-  {
-    q: "Wie verbinde ich die Schuhe mit der App?",
-    a: 'Schalten Sie den Schuh ein (roter Knopf unter der Fersenlasche), öffnen Sie die App im Browser und klicken Sie auf "Verbinden". Der Schuh erscheint als "PRIMIGI LED" in der Bluetooth-Liste.',
-  },
-  {
-    q: "Welche Texte kann ich auf die Schuhe schreiben?",
-    a: "Beliebige Texte mit Buchstaben, Zahlen und Sonderzeichen. Der Text scrollt als LED-Laufschrift über das Display am Klettverschluss. Sie können auch die Laufrichtung ändern.",
-  },
-  {
-    q: "Muss ich die App installieren?",
-    a: "Nein! Unsere App läuft direkt im Browser über Web Bluetooth. Kein App Store, kein Download, keine Installation. Einfach öffnen und verbinden.",
-  },
-  {
-    q: "Funktioniert das auch ohne Android-Gerät?",
-    a: "Ja! Genau dafür wurde diese App entwickelt. Sie funktioniert auf jedem Gerät mit einem modernen Browser und Bluetooth — Mac, Windows-PC, iPhone, iPad, Android.",
-  },
-  {
-    q: "Wie lade ich die LED-Schuhe auf?",
-    a: "Die Schuhe werden über das mitgelieferte USB-Kabel aufgeladen. Der USB-Anschluss befindet sich seitlich am Schuh. Eine volle Ladung hält ca. 4–6 Stunden.",
-  },
-  {
-    q: "Welche Primigi Schuhe sind mit der App kompatibel?",
-    a: "Alle Primigi Modelle der Reihe 'Infinity Light' bzw. 'B&g Infinity Light' — sowohl die Low-Top Sneaker für Jungen und Mädchen als auch die High-Top Varianten. Erkennbar am LED-Display im Klettverschluss und dem roten Knopf unter der Fersenlasche.",
-  },
-  {
-    q: "Wo kann ich den Primigi Lights App Download finden?",
-    a: "Die originale Primigi Lights App ist im App Store nicht verfügbar und im Google Play Store kaum noch zu finden. Unsere Web-App auf primigi.dev ist die zuverlässige Alternative — funktioniert direkt im Browser ohne Download.",
-  },
-  {
-    q: "Wie fallen Primigi Infinity Light Schuhe aus?",
-    a: "Primigi Infinity Light Schuhe fallen normal bis leicht klein aus. Wir empfehlen, eine halbe Größe größer zu bestellen. Die Schuhe gibt es in den Größen EU 24 bis 39.",
-  },
-];
-
 export default function LandingPage() {
+  const t = useTranslations();
   const [inputText, setInputText] = useState("NOAH ♥");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [cols, setCols] = useState(32);
@@ -85,6 +52,27 @@ export default function LandingPage() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
+  const FAQ = Array.from({ length: 9 }, (_, i) => ({
+    q: t(`faq.q${i + 1}`),
+    a: t(`faq.a${i + 1}`),
+  }));
+
+  const FEATURES = [
+    { title: t("features.f1title"), desc: t("features.f1desc"), icon: t("features.f1icon") },
+    { title: t("features.f2title"), desc: t("features.f2desc"), icon: t("features.f2icon") },
+    { title: t("features.f3title"), desc: t("features.f3desc"), icon: t("features.f3icon") },
+    { title: t("features.f4title"), desc: t("features.f4desc"), icon: t("features.f4icon") },
+    { title: t("features.f5title"), desc: t("features.f5desc"), icon: t("features.f5icon") },
+    { title: t("features.f6title"), desc: t("features.f6desc"), icon: t("features.f6icon") },
+  ];
+
+  const STEPS = [
+    { step: "01", title: t("steps.s1title"), desc: t("steps.s1desc") },
+    { step: "02", title: t("steps.s2title"), desc: t("steps.s2desc") },
+    { step: "03", title: t("steps.s3title"), desc: t("steps.s3desc") },
+    { step: "04", title: t("steps.s4title"), desc: t("steps.s4desc") },
+  ];
 
   return (
     <div
@@ -133,21 +121,24 @@ export default function LandingPage() {
             PRIMIGI.DEV
           </span>
         </div>
-        <a
-          href="#download"
-          style={{
-            background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
-            color: "#08080f",
-            padding: "8px 20px",
-            borderRadius: 8,
-            fontWeight: 700,
-            fontSize: 14,
-            textDecoration: "none",
-            letterSpacing: 0.5,
-          }}
-        >
-          App holen — 3 €
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <LanguageSwitcher />
+          <a
+            href="#download"
+            style={{
+              background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
+              color: "#08080f",
+              padding: "8px 20px",
+              borderRadius: 8,
+              fontWeight: 700,
+              fontSize: 14,
+              textDecoration: "none",
+              letterSpacing: 0.5,
+            }}
+          >
+            {t("nav.cta")}
+          </a>
+        </div>
       </nav>
 
       {/* HERO */}
@@ -187,7 +178,7 @@ export default function LandingPage() {
             opacity: 0.8,
           }}
         >
-          Die App, die Primigi vergessen hat
+          {t("hero.tagline")}
         </p>
         <h1
           style={{
@@ -198,16 +189,16 @@ export default function LandingPage() {
             maxWidth: 600,
           }}
         >
-          Programmiere die{" "}
+          {t("hero.titleStart")}{" "}
           <span
             style={{
               color: "#38bdf8",
               textShadow: "0 0 30px rgba(56,189,248,0.4)",
             }}
           >
-            LED-Laufschrift
+            {t("hero.titleHighlight")}
           </span>{" "}
-          deiner Primigi Schuhe
+          {t("hero.titleEnd")}
         </h1>
         <p
           style={{
@@ -289,7 +280,7 @@ export default function LandingPage() {
               textTransform: "uppercase",
             }}
           >
-            ↓ Live-Vorschau der LED-Laufschrift
+            {t("hero.previewLabel")}
           </p>
           <div
             style={{
@@ -307,7 +298,7 @@ export default function LandingPage() {
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder="Dein Text hier eingeben..."
+              placeholder={t("hero.inputPlaceholder")}
               maxLength={40}
               style={{
                 width: "100%",
@@ -347,7 +338,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA */}
       {/* iPhone callout */}
       <section style={{ padding: "0 24px 8px", maxWidth: 560, margin: "0 auto" }}>
         <div style={{
@@ -363,11 +353,19 @@ export default function LandingPage() {
           <span style={{ fontSize: 28 }}>📱</span>
           <div style={{ flex: 1, minWidth: 200 }}>
             <p style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0", margin: "0 0 4px" }}>
-              iPhone / iPad Nutzer
+              {t("iphone.title")}
             </p>
             <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, lineHeight: 1.5 }}>
-              Safari unterstützt kein Bluetooth. Lade einmalig die kostenlose{" "}
-              <strong style={{ color: "#e2e8f0" }}>Bluefy App</strong> und öffne dann primigi.dev darin.
+              {t("iphone.desc").split("Bluefy App").map((part, idx, arr) =>
+                idx < arr.length - 1 ? (
+                  <span key={idx}>
+                    {part}
+                    <strong style={{ color: "#e2e8f0" }}>Bluefy App</strong>
+                  </span>
+                ) : (
+                  <span key={idx}>{part}</span>
+                )
+              )}
             </p>
           </div>
           <a
@@ -386,11 +384,12 @@ export default function LandingPage() {
               whiteSpace: "nowrap",
             }}
           >
-            Im App Store →
+            {t("iphone.cta")}
           </a>
         </div>
       </section>
 
+      {/* CTA */}
       <section
         id="download"
         style={{
@@ -445,7 +444,7 @@ export default function LandingPage() {
             >
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
             </svg>
-            App herunterladen — 3 €
+            {t("cta.button")}
           </button>
         </form>
         <p
@@ -456,9 +455,9 @@ export default function LandingPage() {
             maxWidth: 400,
           }}
         >
-          Einmalzahlung. Kein Abo. Läuft im Browser auf allen Geräten.
+          {t("cta.subtext")}
           <br />
-          Zahlung über Stripe. Sofort verfügbar nach Kauf.
+          {t("cta.payment")}
         </p>
 
         {/* Trust badges */}
@@ -472,10 +471,10 @@ export default function LandingPage() {
           }}
         >
           {[
-            { icon: "🔒", label: "SSL-verschlüsselt" },
-            { icon: "🌐", label: "Alle Geräte" },
-            { icon: "⚡", label: "Sofort-Zugang" },
-            { icon: "🔵", label: "Bluetooth LE" },
+            { icon: "🔒", label: t("cta.ssl") },
+            { icon: "🌐", label: t("cta.devices") },
+            { icon: "⚡", label: t("cta.instant") },
+            { icon: "🔵", label: t("cta.ble") },
           ].map(({ icon, label }) => (
             <div
               key={label}
@@ -505,7 +504,7 @@ export default function LandingPage() {
             marginBottom: 48,
           }}
         >
-          So einfach geht&apos;s
+          {t("steps.title")}
         </h2>
         <div
           style={{
@@ -514,28 +513,7 @@ export default function LandingPage() {
             gap: 24,
           }}
         >
-          {[
-            {
-              step: "01",
-              title: "Schuh einschalten",
-              desc: "Roten Knopf unter der Fersenlasche drücken, bis die LEDs leuchten.",
-            },
-            {
-              step: "02",
-              title: "App öffnen",
-              desc: "primigi.dev im Browser aufrufen — auf Handy, Tablet oder Computer.",
-            },
-            {
-              step: "03",
-              title: "Verbinden",
-              desc: 'Auf "Verbinden" klicken. Der Schuh erscheint als "PRIMIGI LED".',
-            },
-            {
-              step: "04",
-              title: "Text eingeben",
-              desc: "Wunschtext eintippen, Senden — und staunen.",
-            },
-          ].map(({ step, title, desc }) => (
+          {STEPS.map(({ step, title, desc }) => (
             <div
               key={step}
               style={{
@@ -596,7 +574,7 @@ export default function LandingPage() {
             marginBottom: 8,
           }}
         >
-          Kompatible Modelle
+          {t("models.title")}
         </h2>
         <p
           style={{
@@ -606,7 +584,7 @@ export default function LandingPage() {
             fontSize: 15,
           }}
         >
-          Alle Primigi Infinity Light Modelle mit programmierbarem LED-Display
+          {t("models.subtitle")}
         </p>
         <div
           style={{
@@ -639,13 +617,13 @@ export default function LandingPage() {
                 style={{ fontSize: 13, color: "#64748b", lineHeight: 1.8 }}
               >
                 <div>
-                  Farben:{" "}
+                  Colors:{" "}
                   <span style={{ color: "#94a3b8" }}>
                     {m.colors.join(", ")}
                   </span>
                 </div>
                 <div>
-                  Größen:{" "}
+                  Sizes:{" "}
                   <span style={{ color: "#94a3b8" }}>{m.sizes}</span>
                 </div>
                 <div
@@ -676,7 +654,7 @@ export default function LandingPage() {
             marginBottom: 8,
           }}
         >
-          Warum diese App?
+          {t("features.title")}
         </h2>
         <p
           style={{
@@ -688,8 +666,7 @@ export default function LandingPage() {
             margin: "0 auto 40px",
           }}
         >
-          Die originale Primigi Lights App gibt es nur für Android — und ist
-          schwer zu finden. Unsere Lösung funktioniert überall.
+          {t("features.subtitle")}
         </p>
         <div
           style={{
@@ -698,38 +675,7 @@ export default function LandingPage() {
             gap: 20,
           }}
         >
-          {[
-            {
-              title: "Kein Android nötig",
-              desc: "Funktioniert auf iPhone, iPad, Mac, Windows, Chromebook — überall wo ein moderner Browser mit Bluetooth läuft.",
-              icon: "📱",
-            },
-            {
-              title: "Keine Installation",
-              desc: "Web-App im Browser. Kein App Store, kein Play Store, kein Download. Einfach URL öffnen und loslegen.",
-              icon: "🌐",
-            },
-            {
-              title: "Reverse Engineered",
-              desc: "Wir haben das Bluetooth-Protokoll der Primigi Schuhe analysiert und eine eigene, bessere App gebaut.",
-              icon: "🔧",
-            },
-            {
-              title: "Sofort nach Kauf",
-              desc: "Einmalzahlung von 3 €, kein Abo. Sofortiger Zugang per E-Mail. Funktioniert dauerhaft.",
-              icon: "⚡",
-            },
-            {
-              title: "Kinderleichte Bedienung",
-              desc: "Text eingeben, auf Senden drücken. Laufrichtung wählbar. Keine technischen Kenntnisse erforderlich.",
-              icon: "👶",
-            },
-            {
-              title: "Deutsche Anleitung",
-              desc: "Komplett auf Deutsch. Mit Schritt-für-Schritt Anleitung und Video-Tutorial. Support per E-Mail.",
-              icon: "🇩🇪",
-            },
-          ].map(({ title, desc, icon }) => (
+          {FEATURES.map(({ title, desc, icon }) => (
             <div
               key={title}
               style={{
@@ -781,7 +727,7 @@ export default function LandingPage() {
             marginBottom: 40,
           }}
         >
-          Häufige Fragen
+          {t("faq.title")}
         </h2>
         <div
           style={{ display: "flex", flexDirection: "column", gap: 8 }}
@@ -865,26 +811,10 @@ export default function LandingPage() {
               marginBottom: 16,
             }}
           >
-            Primigi Infinity Light Schuhe programmieren — die Primigi Lights App Alternative
+            {t("seo.h1")}
           </h2>
-          <p>
-            Die Primigi Infinity Light Kollektion begeistert Kinder mit ihrer
-            programmierbaren LED-Laufschrift am Klettverschluss. Ob als LED Schuhe
-            für Kinder Jungen oder als LED Schuhe für Kinder Mädchen — die leuchtenden
-            Sneaker sind der Hit auf dem Schulhof. Doch viele
-            Eltern stehen vor einem Problem: Die offizielle „Primigi Lights"
-            App ist ausschließlich für Android verfügbar und im Google Play Store
-            nicht mehr auffindbar. Der Primigi Lights App Download funktioniert nicht
-            mehr. Wer ein iPhone, ein iPad oder einen Mac nutzt, stand bisher ohne Lösung da.
-          </p>
-          <p style={{ marginTop: 16 }}>
-            Wir hatten das gleiche Problem. Zwei Kinder, leuchtende Schuhe,
-            kein Android-Gerät im Haus. Also haben wir kurzerhand die App
-            selbst gebaut. Per Reverse Engineering des Bluetooth-Protokolls
-            entstand eine Web-App, die im Browser läuft — egal ob iPhone,
-            Mac oder Windows-Laptop. Seite öffnen, Schuh verbinden,
-            Wunschtext eintippen. Fertig.
-          </p>
+          <p>{t("seo.p1")}</p>
+          <p style={{ marginTop: 16 }}>{t("seo.p2")}</p>
 
           <h3
             style={{
@@ -895,16 +825,9 @@ export default function LandingPage() {
               marginBottom: 12,
             }}
           >
-            Primigi LED Schuhe App für iPhone und Mac
+            {t("seo.h2")}
           </h3>
-          <p>
-            Wenn Sie nach „Primigi App iPhone", „Primigi App Mac", „Primigi App Download"
-            oder „Primigi Lights App Apple" suchen, sind Sie hier richtig.
-            Auf Mac funktioniert unsere App direkt in Chrome oder Edge. Auf iPhone und iPad
-            lädt man einmalig die kostenlose App „Bluefy – Web BLE Browser" aus dem App Store
-            und öffnet dort primigi.dev — dann läuft alles genauso wie auf Android oder Mac.
-            Kein Umweg über Android-Emulatoren, kein Ausleihen eines Fremd-Geräts.
-          </p>
+          <p>{t("seo.p3")}</p>
 
           <h3
             style={{
@@ -915,17 +838,9 @@ export default function LandingPage() {
               marginBottom: 12,
             }}
           >
-            Primigi Infinity Light App für Windows PC
+            {t("seo.h3")}
           </h3>
-          <p>
-            Auch Windows-Nutzer profitieren: Chrome und Edge unterstützen Web
-            Bluetooth vollständig. Wenn Ihr PC oder Laptop Bluetooth hat (was
-            bei den meisten modernen Geräten der Fall ist), können Sie die
-            Primigi Kinderschuhe direkt vom Computer aus programmieren. Ideal, wenn
-            die Kinder ihren eigenen Text für den Schultag vorbereiten
-            möchten. Die Primigi Infinity Light App funktioniert auf Windows 10 und 11
-            ohne zusätzliche Software.
-          </p>
+          <p>{t("seo.p4")}</p>
 
           <h3
             style={{
@@ -936,16 +851,9 @@ export default function LandingPage() {
               marginBottom: 12,
             }}
           >
-            Was ist die Primigi Lights App?
+            {t("seo.h4")}
           </h3>
-          <p>
-            Primigi hat die „Primigi Lights" App ursprünglich für Android
-            veröffentlicht. Per Bluetooth Low Energy (BLE) verbindet sie sich
-            mit dem Schuh und schickt Texte, Grafiken und Animationen ans
-            LED-Display. Klingt toll — nur: Im Play Store ist sie praktisch
-            verschwunden. Und für iPhones gab es sie nie. Genau diese Lücke
-            füllt primigi.dev als Primigi Lights App Alternative.
-          </p>
+          <p>{t("seo.p5")}</p>
 
           <h3
             style={{
@@ -956,16 +864,9 @@ export default function LandingPage() {
               marginBottom: 12,
             }}
           >
-            So funktionieren die Primigi LED-Schuhe
+            {t("seo.h5")}
           </h3>
-          <p>
-            Am Klettverschluss sitzt ein kleines LED-Matrix-Display. Roten
-            Knopf unter der Fersenlasche drücken — schon leuchtet „PRIMIGI"
-            über den Schuh. Vorinstallierte Grafiken laufen im Wechsel durch.
-            Per Doppelklick ändern Sie Laufrichtung und Orientierung.
-            Wichtig zu wissen: Der USB-Anschluss am Schuh lädt nur den Akku.
-            Daten gehen ausschließlich per Bluetooth rein.
-          </p>
+          <p>{t("seo.p6")}</p>
 
           <h3
             style={{
@@ -976,16 +877,9 @@ export default function LandingPage() {
               marginBottom: 12,
             }}
           >
-            Technische Hintergründe
+            {t("seo.h6")}
           </h3>
-          <p>
-            Unter der Haube ist es Bluetooth Low Energy (BLE). Der Schuh
-            taucht als „PRIMIGI LED" auf und erwartet Hex-kodierte Pakete mit
-            Prüfsumme — jeweils 20 Byte am Stück. Wir haben das Protokoll
-            aus der Original-APK reverse-engineered und als Web Bluetooth
-            API im Browser nachgebaut. Klingt nerdig, bedeutet für Sie aber
-            einfach: Seite öffnen, verbinden, Text eintippen, läuft.
-          </p>
+          <p>{t("seo.p7")}</p>
 
           <h3
             style={{
@@ -996,39 +890,9 @@ export default function LandingPage() {
               marginBottom: 12,
             }}
           >
-            LED Schuhe Kinder — welche Modelle sind kompatibel?
+            {t("seo.h7")}
           </h3>
-          <p>
-            Die Primigi Infinity Light Reihe umfasst mehrere Modelle für Jungen
-            und Mädchen. LED Schuhe für Kinder Jungen gibt es als blaue oder
-            schwarze Sneaker (PIL 2959x), LED Schuhe für Kinder Mädchen in Rosa,
-            Weiß und Silber (PIL 2969x). Zusätzlich sind High-Top Varianten
-            (PIL 2961x) und Velcro-Low-Modelle (PIL 2963x) erhältlich. Alle
-            Modelle mit dem Markennamen „Infinity Light" oder „B&g Infinity Light"
-            haben das programmierbare LED-Display und sind mit unserer App kompatibel.
-            Die Schuhe sind in den Größen EU 24 bis 39 erhältlich und werden über
-            Händler wie Amazon, Spartoo und den Primigi Online-Shop in ganz Europa
-            verkauft.
-          </p>
-
-          <h3
-            style={{
-              fontSize: 17,
-              fontWeight: 700,
-              color: "#94a3b8",
-              marginTop: 32,
-              marginBottom: 12,
-            }}
-          >
-            Primigi Schuhe mit App steuern — wie fallen Primigi Schuhe aus?
-          </h3>
-          <p>
-            Kurze Antwort: Eher knapp. Bei unseren Kids mussten wir eine halbe
-            Nummer größer nehmen. Sportlicher Schnitt, Klettverschluss mit
-            integriertem LED-Display — sitzt fest, aber bestellen Sie im Zweifel
-            lieber eine Nummer größer. Der Akku hält bei normalem Spielplatz-Einsatz
-            4 bis 6 Stunden, geladen wird per USB-Kabel (liegt bei).
-          </p>
+          <p>{t("seo.p8")}</p>
         </article>
       </section>
 
@@ -1079,14 +943,12 @@ export default function LandingPage() {
             lineHeight: 1.6,
           }}
         >
-          Nicht verbunden mit Primigi S.p.A. oder IMAC S.p.A. Dies ist ein
-          unabhängiges Tool.
+          {t("footer.disclaimer")}
           <br />
-          „Primigi" und „Infinity Light" sind eingetragene Marken ihrer
-          jeweiligen Inhaber.
+          {t("footer.trademark")}
           <br />
           <span style={{ color: "#475569" }}>
-            © 2026 primigi.dev — Regensburg, Deutschland
+            {t("footer.copyright")}
           </span>
         </p>
       </footer>

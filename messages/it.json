@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Primigi App per iPhone e Mac — Programma le scarpe LED | primigi.dev",
+    "description": "L'app Primigi Lights è disponibile solo per Android. La nostra web-app funziona su iPhone, iPad, Mac e Windows. Programma la scritta LED delle scarpe Primigi Infinity Light — direttamente nel browser.",
+    "ogTitle": "Primigi App per iPhone e Mac — Programma le scarpe LED Infinity Light",
+    "ogDescription": "Web-app per programmare la scritta LED delle scarpe Primigi Infinity Light. L'app Primigi Lights esiste solo per Android — la nostra alternativa funziona su iPhone, iPad, Mac e Windows."
+  },
+  "nav": { "cta": "Scarica l'app — 3 €" },
+  "iphone": {
+    "title": "Utenti iPhone / iPad",
+    "desc": "Safari non supporta il Bluetooth. Scarica una volta l'app gratuita Bluefy e apri primigi.dev al suo interno.",
+    "cta": "Su App Store →"
+  },
+  "hero": {
+    "tagline": "L'app che Primigi ha dimenticato di fare",
+    "titleStart": "Programma la",
+    "titleHighlight": "scritta LED",
+    "titleEnd": "delle tue scarpe Primigi",
+    "previewLabel": "↓ Anteprima live della scritta LED",
+    "inputPlaceholder": "Scrivi il tuo testo qui..."
+  },
+  "cta": {
+    "button": "Scarica l'app — 3 €",
+    "subtext": "Pagamento unico. Nessun abbonamento. Funziona nel browser su tutti i dispositivi.",
+    "payment": "Pagamento tramite Stripe. Disponibile subito dopo l'acquisto.",
+    "ssl": "Crittografia SSL",
+    "devices": "Tutti i dispositivi",
+    "instant": "Accesso immediato",
+    "ble": "Bluetooth LE"
+  },
+  "steps": {
+    "title": "È semplicissimo",
+    "s1title": "Accendi la scarpa",
+    "s1desc": "Premi il pulsante rosso sotto il tallone finché i LED si accendono.",
+    "s2title": "Apri l'app",
+    "s2desc": "Vai su primigi.dev nel browser — da telefono, tablet o computer.",
+    "s3title": "Connetti",
+    "s3desc": "Clicca su \"Connetti\". La scarpa appare come \"PRIMIGI LED\".",
+    "s4title": "Inserisci il testo",
+    "s4desc": "Digita il testo desiderato, invia — e stupisciti."
+  },
+  "models": {
+    "title": "Modelli compatibili",
+    "subtitle": "Tutti i modelli Primigi Infinity Light con display LED programmabile"
+  },
+  "features": {
+    "title": "Perché questa app?",
+    "subtitle": "L'app Primigi Lights originale esiste solo per Android — ed è difficile da trovare. La nostra soluzione funziona ovunque.",
+    "f1title": "Senza Android",
+    "f1desc": "Funziona su iPhone, iPad, Mac, Windows — ovunque ci sia un browser moderno con Bluetooth.",
+    "f1icon": "📱",
+    "f2title": "Nessuna installazione",
+    "f2desc": "Web-app nel browser. Niente App Store, niente Play Store, nessun download.",
+    "f2icon": "🌐",
+    "f3title": "Reverse Engineering",
+    "f3desc": "Abbiamo analizzato il protocollo Bluetooth delle scarpe Primigi e creato un'app migliore.",
+    "f3icon": "🔧",
+    "f4title": "Disponibile subito",
+    "f4desc": "Pagamento unico di 3 €, nessun abbonamento. Accesso immediato. Funziona per sempre.",
+    "f4icon": "⚡",
+    "f5title": "Facilissima da usare",
+    "f5desc": "Inserisci il testo, premi invio. Nessuna conoscenza tecnica richiesta.",
+    "f5icon": "👶",
+    "f6title": "Guida in italiano",
+    "f6desc": "Completamente in italiano. Con guida passo-passo. Supporto via email.",
+    "f6icon": "🇮🇹"
+  },
+  "faq": {
+    "title": "Domande frequenti",
+    "q1": "L'app Primigi funziona su iPhone?",
+    "a1": "Sì — ma Safari non supporta il Web Bluetooth. Per iPhone e iPad, scarica l'app gratuita \"Bluefy – Web BLE Browser\" dall'App Store, apri primigi.dev al suo interno e funziona perfettamente.",
+    "q2": "Come collego le scarpe all'app?",
+    "a2": "Accendi la scarpa (pulsante rosso sotto il tallone), apri l'app nel browser e clicca su \"Connetti\". La scarpa appare come \"PRIMIGI LED\".",
+    "q3": "Quali testi posso scrivere sulle scarpe?",
+    "a3": "Qualsiasi testo con lettere, numeri e caratteri speciali. Il testo scorre come scritta LED sul display sul velcro.",
+    "q4": "Devo installare l'app?",
+    "a4": "No! La nostra app funziona direttamente nel browser tramite Web Bluetooth. Niente App Store, nessun download, nessuna installazione.",
+    "q5": "Funziona anche senza un dispositivo Android?",
+    "a5": "Sì! È esattamente per questo che abbiamo creato questa app. Mac, PC Windows, iPhone (con Bluefy), iPad, Android.",
+    "q6": "Come si ricaricano le scarpe LED?",
+    "a6": "Le scarpe si ricaricano tramite il cavo USB incluso. Una carica completa dura circa 4–6 ore.",
+    "q7": "Quali scarpe Primigi sono compatibili?",
+    "a7": "Tutti i modelli Primigi della serie 'Infinity Light' — riconoscibili dal display LED sul velcro e dal pulsante rosso sotto il tallone.",
+    "q8": "Dove trovo il download dell'app Primigi Lights?",
+    "a8": "L'app originale è quasi introvabile nel Play Store. La nostra web-app su primigi.dev è l'alternativa affidabile.",
+    "q9": "Come calzano le scarpe Primigi Infinity Light?",
+    "a9": "Normali o leggermente strette — ordinare mezzo numero in più. Taglie EU 24–39."
+  },
+  "seo": {
+    "h1": "Programmare le scarpe Primigi Infinity Light — l'alternativa all'app Primigi Lights",
+    "p1": "La collezione Primigi Infinity Light entusiasma i bambini con la sua scritta LED programmabile. L'app ufficiale \"Primigi Lights\" è disponibile solo per Android ed è quasi impossibile trovarla nel Play Store. Chi usa iPhone, iPad o Mac era finora senza soluzione.",
+    "p2": "Avevamo lo stesso problema e abbiamo deciso di creare l'app noi stessi. Tramite il reverse engineering del protocollo Bluetooth, abbiamo realizzato una web-app che funziona nel browser — che tu usi iPhone (con Bluefy), Mac o Windows.",
+    "h2": "App Primigi per iPhone e Mac",
+    "p3": "Su Mac la nostra app funziona direttamente in Chrome o Edge. Su iPhone si scarica una volta l'app gratuita \"Bluefy\" dall'App Store e si apre primigi.dev al suo interno.",
+    "h3": "App Primigi Infinity Light per Windows",
+    "p4": "Chrome ed Edge supportano completamente il Web Bluetooth. Se il tuo PC ha il Bluetooth, puoi programmare le scarpe direttamente dal computer.",
+    "h4": "Cos'è l'app Primigi Lights?",
+    "p5": "Primigi ha rilasciato l'app \"Primigi Lights\" per Android — nel Play Store è praticamente scomparsa. Per iPhone non è mai esistita. primigi.dev colma questa lacuna.",
+    "h5": "Come funzionano le scarpe LED Primigi",
+    "p6": "Sul velcro c'è un display a matrice LED. Premi il pulsante rosso, la scarpa si illumina. La porta USB carica solo la batteria — i dati passano esclusivamente via Bluetooth.",
+    "h6": "Scarpe LED bambini — modelli compatibili",
+    "p7": "PIL 2959x (maschi), PIL 2969x (femmine), PIL 2961x (High-Top), PIL 2963x (Velcro Low). Taglie EU 24–39. Disponibili su Amazon, Spartoo e nello shop online Primigi.",
+    "h7": "Come calzano le scarpe Primigi?",
+    "p8": "Tendenzialmente strette. Ordinare mezzo numero in più. La batteria dura 4–6 ore, si ricarica con cavo USB."
+  },
+  "footer": {
+    "disclaimer": "Non affiliato con Primigi S.p.A. o IMAC S.p.A. Questo è uno strumento indipendente.",
+    "trademark": "\"Primigi\" e \"Infinity Light\" sono marchi registrati dei rispettivi proprietari.",
+    "copyright": "© 2026 primigi.dev — Regensburg, Germania"
+  }
+}

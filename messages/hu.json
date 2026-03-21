@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Primigi alkalmazás iPhone-ra és Mac-re — LED cipő programozása | primigi.dev",
+    "description": "A Primigi Lights alkalmazás csak Androidra érhető el. A mi webalkalmazásunk iPhone-on, iPaden, Macen és Windowson is működik. Programozd a Primigi Infinity Light cipők LED feliratát — közvetlenül a böngészőből.",
+    "ogTitle": "Primigi alkalmazás iPhone-ra és Mac-re — LED Infinity Light cipő programozása",
+    "ogDescription": "Webalkalmazás a Primigi Infinity Light gyerekcipők LED feliratának programozásához. A Primigi Lights csak Androidon működik — a mi alternatívánk iPhone-on, iPaden, Macen és Windowson is."
+  },
+  "nav": { "cta": "Alkalmazás letöltése — 3 €" },
+  "iphone": {
+    "title": "iPhone / iPad felhasználók",
+    "desc": "A Safari nem támogatja a Bluetooth-t. Töltsd le egyszer az ingyenes Bluefy alkalmazást, és nyisd meg benne a primigi.dev oldalt.",
+    "cta": "App Store-ban →"
+  },
+  "hero": {
+    "tagline": "Az alkalmazás, amelyet a Primigi elfelejtett elkészíteni",
+    "titleStart": "Programozd a",
+    "titleHighlight": "LED feliratot",
+    "titleEnd": "a Primigi cipőidön",
+    "previewLabel": "↓ LED felirat élő előnézete",
+    "inputPlaceholder": "Írd be a szövegedet..."
+  },
+  "cta": {
+    "button": "Alkalmazás letöltése — 3 €",
+    "subtext": "Egyszeri fizetés. Nincs előfizetés. Böngészőben működik minden eszközön.",
+    "payment": "Fizetés Stripe-on keresztül. Azonnal elérhető a vásárlás után.",
+    "ssl": "SSL titkosítás",
+    "devices": "Minden eszköz",
+    "instant": "Azonnali hozzáférés",
+    "ble": "Bluetooth LE"
+  },
+  "steps": {
+    "title": "Ilyen egyszerű",
+    "s1title": "Kapcsold be a cipőt",
+    "s1desc": "Nyomd meg a piros gombot a sarok alatt, amíg a LED-ek felgyulladnak.",
+    "s2title": "Nyisd meg az alkalmazást",
+    "s2desc": "Menj a primigi.dev oldalra a böngészőben — telefonon, tableten vagy számítógépen.",
+    "s3title": "Csatlakozás",
+    "s3desc": "Kattints a \"Csatlakozás\" gombra. A cipő \"PRIMIGI LED\" névvel jelenik meg.",
+    "s4title": "Szöveg beírása",
+    "s4desc": "Gépeld be a kívánt szöveget, küld el — és csodálkozz."
+  },
+  "models": {
+    "title": "Kompatibilis modellek",
+    "subtitle": "Minden Primigi Infinity Light modell programozható LED kijelzővel"
+  },
+  "features": {
+    "title": "Miért ez az alkalmazás?",
+    "subtitle": "Az eredeti Primigi Lights alkalmazás csak Androidra létezik — és nehéz megtalálni. A mi megoldásunk mindenhol működik.",
+    "f1title": "Android nem szükséges",
+    "f1desc": "Működik iPhone-on, iPaden, Macen, Windowson — mindenhol, ahol modern böngésző fut Bluetooth-szal.",
+    "f1icon": "📱",
+    "f2title": "Nincs telepítés",
+    "f2desc": "Webalkalmazás a böngészőben. Nincs App Store, nincs Play Store, nincs letöltés.",
+    "f2icon": "🌐",
+    "f3title": "Visszafejtve",
+    "f3desc": "Elemeztük a Bluetooth protokollt és saját, jobb alkalmazást építettünk.",
+    "f3icon": "🔧",
+    "f4title": "Azonnal a vásárlás után",
+    "f4desc": "Egyszeri 3 € fizetés, nincs előfizetés. Azonnali hozzáférés. Örökké működik.",
+    "f4icon": "⚡",
+    "f5title": "Gyerekjáték a használata",
+    "f5desc": "Írd be a szöveget, nyomj küldés gombot. Nem szükséges műszaki tudás.",
+    "f5icon": "👶",
+    "f6title": "Magyar útmutató",
+    "f6desc": "Teljesen magyarul. Lépésről lépésre útmutatóval. Email támogatással.",
+    "f6icon": "🇭🇺"
+  },
+  "faq": {
+    "title": "Gyakori kérdések",
+    "q1": "Működik a Primigi alkalmazás iPhone-on?",
+    "a1": "Igen — de a Safari nem támogatja a Web Bluetooth-t. iPhone-ra és iPadre töltsd le egyszer az ingyenes \"Bluefy – Web BLE Browser\" alkalmazást az App Store-ból, nyisd meg benne a primigi.dev-t, és minden működik.",
+    "q2": "Hogyan csatlakoztatom a cipőket az alkalmazáshoz?",
+    "a2": "Kapcsold be a cipőt (piros gomb a sarok alatt), nyisd meg az alkalmazást a böngészőben, és kattints a \"Csatlakozás\" gombra. A cipő \"PRIMIGI LED\" névvel jelenik meg.",
+    "q3": "Milyen szövegeket írhatok a cipőkre?",
+    "a3": "Bármilyen szöveg betűkkel, számokkal és speciális karakterekkel. A szöveg LED szalagként fut végig a tépőzár kijelzőjén.",
+    "q4": "Telepíteni kell az alkalmazást?",
+    "a4": "Nem! Alkalmazásunk közvetlenül a böngészőben fut Web Bluetooth segítségével. Nincs App Store, nincs letöltés, nincs telepítés.",
+    "q5": "Működik Android eszköz nélkül is?",
+    "a5": "Igen! Pontosan ezért készítettük ezt az alkalmazást. Mac, Windows PC, iPhone (Bluefy-val), iPad, Android.",
+    "q6": "Hogyan töltöm fel a LED cipőket?",
+    "a6": "A cipőket a mellékelt USB kábellel lehet feltölteni. Egy teljes töltés körülbelül 4–6 óráig tart.",
+    "q7": "Mely Primigi cipők kompatibilisek?",
+    "a7": "Minden Primigi modell az 'Infinity Light' sorozatból — a tépőzáron lévő LED kijelzőről és a sarok alatti piros gombról felismerhető.",
+    "q8": "Hol találom a Primigi Lights alkalmazás letöltését?",
+    "a8": "Az eredeti alkalmazás alig megtalálható a Play Store-ban. A mi webalkalmazásunk a primigi.dev-en a megbízható alternatíva.",
+    "q9": "Hogyan méretez a Primigi Infinity Light cipő?",
+    "a9": "Normál vagy enyhén szűk — rendelj fél számmal nagyobbat. EU 24–39-es méretek."
+  },
+  "seo": {
+    "h1": "Primigi Infinity Light cipők programozása — a Primigi Lights alkalmazás alternatívája",
+    "p1": "A Primigi Infinity Light kollekció a programozható LED felirattal nyűgözi le a gyerekeket. A hivatalos \"Primigi Lights\" alkalmazás csak Androidra érhető el és alig található meg a Play Store-ban. Az iPhone, iPad és Mac felhasználóknak nem volt megoldás.",
+    "p2": "Ugyanilyen problémánk volt, és úgy döntöttünk, hogy magunk építjük meg az alkalmazást. A Bluetooth protokoll visszafejtésével létrehoztunk egy webalkalmazást, amely böngészőben fut — akár iPhone-on (Bluefy-val), Macen vagy Windowson.",
+    "h2": "Primigi alkalmazás iPhone-ra és Macre",
+    "p3": "Macen az alkalmazásunk közvetlenül Chrome-ban vagy Edge-ben működik. iPhone-on töltsd le egyszer az ingyenes \"Bluefy\" alkalmazást az App Store-ból, és nyisd meg benne a primigi.dev-t.",
+    "h3": "Primigi Infinity Light alkalmazás Windowsra",
+    "p4": "A Chrome és az Edge teljes mértékben támogatja a Web Bluetooth-t. Ha a számítógéped Bluetooth-szal rendelkezik, közvetlenül a gépről programozhatod a cipőket.",
+    "h4": "Mi az a Primigi Lights alkalmazás?",
+    "p5": "A Primigi kiadta a \"Primigi Lights\" alkalmazást Androidra — a Play Store-ból gyakorlatilag eltűnt. iPhone-ra soha nem létezett. A primigi.dev tölti ki ezt a hiányt.",
+    "h5": "Hogyan működnek a Primigi LED cipők",
+    "p6": "A tépőzáron LED mátrix kijelző van. Nyomd meg a piros gombot, a cipő kigyullad. Az USB port csak az akkumulátort tölti — az adatok kizárólag Bluetooth-on mennek át.",
+    "h6": "LED cipők gyerekeknek — kompatibilis modellek",
+    "p7": "PIL 2959x (fiúk), PIL 2969x (lányok), PIL 2961x (High-Top), PIL 2963x (Velcro Low). EU 24–39-es méretek. Elérhető az Amazonon, a Spartoo-n és a Primigi webshopban.",
+    "h7": "Hogyan méretez a Primigi cipő?",
+    "p8": "Inkább szűk. Rendelj fél számmal nagyobbat. Az akkumulátor 4–6 óráig bírja, USB kábellel tölthető."
+  },
+  "footer": {
+    "disclaimer": "Nem áll kapcsolatban a Primigi S.p.A.-val vagy az IMAC S.p.A.-val. Ez egy független eszköz.",
+    "trademark": "A \"Primigi\" és az \"Infinity Light\" bejegyzett védjegyek.",
+    "copyright": "© 2026 primigi.dev — Regensburg, Németország"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Application Primigi pour iPhone et Mac — Programmez les chaussures LED | primigi.dev",
+    "description": "L'application Primigi Lights n'existe que pour Android. Notre application web fonctionne sur iPhone, iPad, Mac et Windows. Programmez le texte LED des chaussures Primigi Infinity Light — directement dans votre navigateur.",
+    "ogTitle": "Application Primigi pour iPhone et Mac — Programmez les chaussures LED Infinity Light",
+    "ogDescription": "Application web pour programmer le texte LED des chaussures enfants Primigi Infinity Light. Primigi Lights est réservé à Android — notre alternative fonctionne sur iPhone, iPad, Mac et Windows."
+  },
+  "nav": { "cta": "Télécharger l'app — 3 €" },
+  "iphone": {
+    "title": "Utilisateurs iPhone / iPad",
+    "desc": "Safari ne supporte pas le Bluetooth. Téléchargez une fois l'application gratuite Bluefy et ouvrez primigi.dev dans cette application.",
+    "cta": "Sur l'App Store →"
+  },
+  "hero": {
+    "tagline": "L'application que Primigi a oublié de faire",
+    "titleStart": "Programmez le",
+    "titleHighlight": "texte LED défilant",
+    "titleEnd": "de vos chaussures Primigi",
+    "previewLabel": "↓ Aperçu en direct du texte LED",
+    "inputPlaceholder": "Entrez votre texte ici..."
+  },
+  "cta": {
+    "button": "Télécharger l'app — 3 €",
+    "subtext": "Paiement unique. Sans abonnement. Fonctionne dans le navigateur sur tous les appareils.",
+    "payment": "Paiement via Stripe. Disponible immédiatement après l'achat.",
+    "ssl": "Chiffrement SSL",
+    "devices": "Tous les appareils",
+    "instant": "Accès immédiat",
+    "ble": "Bluetooth LE"
+  },
+  "steps": {
+    "title": "C'est aussi simple que ça",
+    "s1title": "Allumez la chaussure",
+    "s1desc": "Appuyez sur le bouton rouge sous la languette du talon jusqu'à ce que les LED s'allument.",
+    "s2title": "Ouvrez l'application",
+    "s2desc": "Allez sur primigi.dev dans votre navigateur — sur téléphone, tablette ou ordinateur.",
+    "s3title": "Connectez",
+    "s3desc": "Cliquez sur \"Connecter\". La chaussure apparaît comme \"PRIMIGI LED\".",
+    "s4title": "Entrez le texte",
+    "s4desc": "Tapez votre message, envoyez — et émerveillez-vous."
+  },
+  "models": {
+    "title": "Modèles compatibles",
+    "subtitle": "Tous les modèles Primigi Infinity Light avec affichage LED programmable"
+  },
+  "features": {
+    "title": "Pourquoi cette application ?",
+    "subtitle": "L'application Primigi Lights originale n'existe que pour Android — et est difficile à trouver. Notre solution fonctionne partout.",
+    "f1title": "Sans Android",
+    "f1desc": "Fonctionne sur iPhone, iPad, Mac, Windows — partout où un navigateur moderne avec Bluetooth tourne.",
+    "f1icon": "📱",
+    "f2title": "Sans installation",
+    "f2desc": "Application web dans le navigateur. Pas d'App Store, pas de Play Store, pas de téléchargement.",
+    "f2icon": "🌐",
+    "f3title": "Rétro-ingénierie",
+    "f3desc": "Nous avons analysé le protocole Bluetooth et construit notre propre application, meilleure.",
+    "f3icon": "🔧",
+    "f4title": "Accès immédiat",
+    "f4desc": "Paiement unique de 3 €, sans abonnement. Accès immédiat. Fonctionne indéfiniment.",
+    "f4icon": "⚡",
+    "f5title": "D'une simplicité enfantine",
+    "f5desc": "Entrez le texte, appuyez sur envoyer. Aucune connaissance technique requise.",
+    "f5icon": "👶",
+    "f6title": "Guide en français",
+    "f6desc": "Entièrement en français. Avec instructions étape par étape. Support par email.",
+    "f6icon": "🇫🇷"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": "L'application Primigi fonctionne-t-elle sur iPhone ?",
+    "a1": "Oui — mais Safari ne supporte pas le Web Bluetooth. Pour iPhone et iPad, téléchargez une fois l'application gratuite \"Bluefy – Web BLE Browser\" depuis l'App Store, ouvrez primigi.dev dedans, et tout fonctionne.",
+    "q2": "Comment connecter les chaussures à l'application ?",
+    "a2": "Allumez la chaussure (bouton rouge sous la languette du talon), ouvrez l'application dans le navigateur et cliquez sur \"Connecter\". La chaussure apparaît comme \"PRIMIGI LED\".",
+    "q3": "Quels textes puis-je écrire sur les chaussures ?",
+    "a3": "N'importe quel texte avec des lettres, des chiffres et des caractères spéciaux. Le texte défile comme une bannière LED sur l'affichage du velcro.",
+    "q4": "Dois-je installer l'application ?",
+    "a4": "Non ! Notre application fonctionne directement dans le navigateur via le Web Bluetooth. Pas d'App Store, pas de téléchargement, pas d'installation.",
+    "q5": "Cela fonctionne-t-il sans appareil Android ?",
+    "a5": "Oui ! C'est exactement pour cela que cette application a été créée. Mac, PC Windows, iPhone (avec Bluefy), iPad, Android.",
+    "q6": "Comment charger les chaussures LED ?",
+    "a6": "Les chaussures se chargent via le câble USB fourni. Une charge complète dure environ 4 à 6 heures.",
+    "q7": "Quelles chaussures Primigi sont compatibles ?",
+    "a7": "Tous les modèles Primigi de la série 'Infinity Light' — reconnaissables à l'affichage LED sur le velcro et au bouton rouge sous la languette du talon.",
+    "q8": "Où trouver le téléchargement de l'application Primigi Lights ?",
+    "a8": "L'application originale est quasi introuvable sur le Play Store. Notre application web sur primigi.dev est l'alternative fiable.",
+    "q9": "Quelle est la pointure des chaussures Primigi Infinity Light ?",
+    "a9": "Normale à légèrement petite — prenez une demi-pointure de plus. Tailles EU 24–39."
+  },
+  "seo": {
+    "h1": "Programmer les chaussures Primigi Infinity Light — l'alternative à l'application Primigi Lights",
+    "p1": "La collection Primigi Infinity Light enchante les enfants avec son texte LED programmable. L'application officielle \"Primigi Lights\" n'existe que pour Android et est quasi introuvable sur le Play Store. Les utilisateurs d'iPhone, iPad et Mac n'avaient pas de solution.",
+    "p2": "Nous avions le même problème et avons décidé de construire l'application nous-mêmes. Grâce à la rétro-ingénierie du protocole Bluetooth, nous avons créé une application web qui fonctionne dans le navigateur — que vous utilisiez iPhone (avec Bluefy), Mac ou Windows.",
+    "h2": "Application Primigi pour iPhone et Mac",
+    "p3": "Sur Mac, notre application fonctionne directement dans Chrome ou Edge. Sur iPhone, téléchargez une fois l'application gratuite \"Bluefy\" depuis l'App Store et ouvrez primigi.dev dedans.",
+    "h3": "Application Primigi Infinity Light pour Windows",
+    "p4": "Chrome et Edge supportent entièrement le Web Bluetooth. Si votre PC dispose du Bluetooth, vous pouvez programmer les chaussures directement depuis l'ordinateur.",
+    "h4": "Qu'est-ce que l'application Primigi Lights ?",
+    "p5": "Primigi a publié l'application \"Primigi Lights\" pour Android — elle a pratiquement disparu du Play Store. Pour iPhone, elle n'a jamais existé. primigi.dev comble ce vide.",
+    "h5": "Comment fonctionnent les chaussures LED Primigi",
+    "p6": "Sur le velcro se trouve un affichage à matrice LED. Appuyez sur le bouton rouge, la chaussure s'allume. Le port USB ne charge que la batterie — les données passent exclusivement par Bluetooth.",
+    "h6": "Chaussures LED enfants — modèles compatibles",
+    "p7": "PIL 2959x (garçons), PIL 2969x (filles), PIL 2961x (High-Top), PIL 2963x (Velcro Low). Tailles EU 24–39. Disponibles sur Amazon, Spartoo et la boutique en ligne Primigi.",
+    "h7": "Quelle est la pointure des chaussures Primigi ?",
+    "p8": "Plutôt petites. Prenez une demi-pointure de plus. La batterie dure 4–6 heures, chargée via câble USB."
+  },
+  "footer": {
+    "disclaimer": "Non affilié à Primigi S.p.A. ou IMAC S.p.A. Il s'agit d'un outil indépendant.",
+    "trademark": "\"Primigi\" et \"Infinity Light\" sont des marques déposées de leurs propriétaires respectifs.",
+    "copyright": "© 2026 primigi.dev — Ratisbonne, Allemagne"
+  }
+}

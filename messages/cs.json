@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Primigi aplikace pro iPhone a Mac — Programování LED bot | primigi.dev",
+    "description": "Aplikace Primigi Lights je dostupná pouze pro Android. Naše webová aplikace funguje na iPhone, iPad, Mac a Windows. Naprogramujte LED nápis na botách Primigi Infinity Light — přímo v prohlížeči.",
+    "ogTitle": "Primigi aplikace pro iPhone a Mac — Programování LED bot Infinity Light",
+    "ogDescription": "Webová aplikace pro programování LED nápisu na dětských botách Primigi Infinity Light. Primigi Lights funguje pouze na Androidu — naše alternativa funguje na iPhone, iPad, Mac a Windows."
+  },
+  "nav": { "cta": "Stáhnout aplikaci — 3 €" },
+  "iphone": {
+    "title": "Uživatelé iPhone / iPad",
+    "desc": "Safari nepodporuje Bluetooth. Stáhněte jednou zdarma aplikaci Bluefy a otevřete v ní primigi.dev.",
+    "cta": "V App Store →"
+  },
+  "hero": {
+    "tagline": "Aplikace, na kterou Primigi zapomnělo",
+    "titleStart": "Naprogramujte",
+    "titleHighlight": "LED nápis",
+    "titleEnd": "na vašich botách Primigi",
+    "previewLabel": "↓ Živý náhled LED nápisu",
+    "inputPlaceholder": "Napište svůj text zde..."
+  },
+  "cta": {
+    "button": "Stáhnout aplikaci — 3 €",
+    "subtext": "Jednorázová platba. Bez předplatného. Funguje v prohlížeči na všech zařízeních.",
+    "payment": "Platba přes Stripe. Dostupné okamžitě po nákupu.",
+    "ssl": "SSL šifrování",
+    "devices": "Všechna zařízení",
+    "instant": "Okamžitý přístup",
+    "ble": "Bluetooth LE"
+  },
+  "steps": {
+    "title": "Takto jednoduché to je",
+    "s1title": "Zapněte botu",
+    "s1desc": "Stiskněte červené tlačítko pod patní záložkou, dokud se nerozsvítí LED diody.",
+    "s2title": "Otevřete aplikaci",
+    "s2desc": "Přejděte na primigi.dev v prohlížeči — na telefonu, tabletu nebo počítači.",
+    "s3title": "Připojte se",
+    "s3desc": "Klikněte na \"Připojit\". Bota se zobrazí jako \"PRIMIGI LED\".",
+    "s4title": "Zadejte text",
+    "s4desc": "Napište požadovaný text, odešlete — a žasněte."
+  },
+  "models": {
+    "title": "Kompatibilní modely",
+    "subtitle": "Všechny modely Primigi Infinity Light s programovatelným LED displejem"
+  },
+  "features": {
+    "title": "Proč tato aplikace?",
+    "subtitle": "Originální aplikace Primigi Lights existuje pouze pro Android — a je těžko k nalezení. Naše řešení funguje všude.",
+    "f1title": "Bez Androidu",
+    "f1desc": "Funguje na iPhone, iPad, Mac, Windows — všude, kde běží moderní prohlížeč s Bluetooth.",
+    "f1icon": "📱",
+    "f2title": "Bez instalace",
+    "f2desc": "Webová aplikace v prohlížeči. Žádný App Store, žádný Play Store, žádné stahování.",
+    "f2icon": "🌐",
+    "f3title": "Reverzní inženýrství",
+    "f3desc": "Analyzovali jsme Bluetooth protokol a vytvořili vlastní, lepší aplikaci.",
+    "f3icon": "🔧",
+    "f4title": "Přístup okamžitě",
+    "f4desc": "Jednorázová platba 3 €, bez předplatného. Okamžitý přístup. Funguje navždy.",
+    "f4icon": "⚡",
+    "f5title": "Hračka k používání",
+    "f5desc": "Zadejte text, stiskněte odeslat. Nejsou potřeba žádné technické znalosti.",
+    "f5icon": "👶",
+    "f6title": "Návod v češtině",
+    "f6desc": "Kompletně v češtině. S návodem krok za krokem. Podpora e-mailem.",
+    "f6icon": "🇨🇿"
+  },
+  "faq": {
+    "title": "Časté dotazy",
+    "q1": "Funguje aplikace Primigi na iPhone?",
+    "a1": "Ano — ale Safari nepodporuje Web Bluetooth. Pro iPhone a iPad si jednou stáhněte zdarma aplikaci \"Bluefy – Web BLE Browser\" z App Store, otevřete v ní primigi.dev a vše funguje.",
+    "q2": "Jak připojím boty k aplikaci?",
+    "a2": "Zapněte botu (červené tlačítko pod patní záložkou), otevřete aplikaci v prohlížeči a klikněte na \"Připojit\". Bota se zobrazí jako \"PRIMIGI LED\".",
+    "q3": "Jaké texty mohu psát na boty?",
+    "a3": "Jakékoli texty s písmeny, číslicemi a speciálními znaky. Text běží jako LED banner na displeji na suchém zipu.",
+    "q4": "Musím instalovat aplikaci?",
+    "a4": "Ne! Naše aplikace běží přímo v prohlížeči přes Web Bluetooth. Žádný App Store, žádné stahování, žádná instalace.",
+    "q5": "Funguje to i bez zařízení s Androidem?",
+    "a5": "Ano! Přesně proto byla tato aplikace vytvořena. Mac, PC s Windows, iPhone (s Bluefy), iPad, Android.",
+    "q6": "Jak nabíjet LED boty?",
+    "a6": "Boty se nabíjejí přiloženým USB kabelem. Plné nabití vydrží přibližně 4–6 hodin.",
+    "q7": "Které boty Primigi jsou kompatibilní?",
+    "a7": "Všechny modely Primigi z řady 'Infinity Light' — poznatelné podle LED displeje na suchém zipu a červeného tlačítka pod patní záložkou.",
+    "q8": "Kde najdu stažení aplikace Primigi Lights?",
+    "a8": "Originální aplikace je v Play Store téměř nenalezitelná. Naše webová aplikace na primigi.dev je spolehlivá alternativa.",
+    "q9": "Jak sedí boty Primigi Infinity Light?",
+    "a9": "Normálně až mírně malé — objednejte o půl čísla větší. Velikosti EU 24–39."
+  },
+  "seo": {
+    "h1": "Programování bot Primigi Infinity Light — alternativa k aplikaci Primigi Lights",
+    "p1": "Kolekce Primigi Infinity Light nadchne děti programovatelným LED nápisem. Oficiální aplikace \"Primigi Lights\" existuje pouze pro Android a v Play Store ji prakticky nenajdete. Uživatelé iPhone, iPad a Mac neměli žádné řešení.",
+    "p2": "Měli jsme stejný problém a rozhodli jsme se aplikaci vytvořit sami. Reverzním inženýrstvím Bluetooth protokolu jsme vytvořili webovou aplikaci, která běží v prohlížeči — ať už používáte iPhone (s Bluefy), Mac nebo Windows.",
+    "h2": "Aplikace Primigi pro iPhone a Mac",
+    "p3": "Na Macu naše aplikace funguje přímo v Chrome nebo Edge. Na iPhone si jednou stáhněte zdarma aplikaci \"Bluefy\" z App Store a otevřete v ní primigi.dev.",
+    "h3": "Aplikace Primigi Infinity Light pro Windows",
+    "p4": "Chrome a Edge plně podporují Web Bluetooth. Pokud má váš počítač Bluetooth, můžete boty programovat přímo z počítače.",
+    "h4": "Co je aplikace Primigi Lights?",
+    "p5": "Primigi vydalo aplikaci \"Primigi Lights\" pro Android — v Play Store prakticky zmizela. Pro iPhone nikdy neexistovala. primigi.dev tuto mezeru zaplňuje.",
+    "h5": "Jak fungují LED boty Primigi",
+    "p6": "Na suchém zipu se nachází LED maticový displej. Stiskněte červené tlačítko, bota se rozsvítí. USB port nabíjí pouze baterii — data procházejí výhradně přes Bluetooth.",
+    "h6": "LED boty pro děti — kompatibilní modely",
+    "p7": "PIL 2959x (chlapci), PIL 2969x (dívky), PIL 2961x (High-Top), PIL 2963x (Velcro Low). Velikosti EU 24–39. Dostupné na Amazonu, Spartoo a v online obchodě Primigi.",
+    "h7": "Jak sedí boty Primigi?",
+    "p8": "Spíše malé. Objednejte o půl čísla větší. Baterie vydrží 4–6 hodin, nabíjí se USB kabelem."
+  },
+  "footer": {
+    "disclaimer": "Není spojeno s Primigi S.p.A. ani IMAC S.p.A. Jedná se o nezávislý nástroj.",
+    "trademark": "\"Primigi\" a \"Infinity Light\" jsou registrované obchodní značky jejich příslušných vlastníků.",
+    "copyright": "© 2026 primigi.dev — Řezno, Německo"
+  }
+}
