@@ -5,7 +5,23 @@
     "ogTitle": "Primigi aplikace pro iPhone a Mac — Programování LED bot Infinity Light",
     "ogDescription": "Webová aplikace pro programování LED nápisu na dětských botách Primigi Infinity Light. Primigi Lights funguje pouze na Androidu — naše alternativa funguje na iPhone, iPad, Mac a Windows."
   },
-  "nav": { "cta": "Stáhnout aplikaci — 1,99 €" },
+  "nav": { "cta": "Stáhnout aplikaci — 1,99 €", "start": "Spustit aplikaci" },
+  "start": {
+    "returning": {
+      "title": "Vítej zpět",
+      "desc": "Zadej svůj 6místný kód, který jsi dostal po zakoupení.",
+      "placeholder": "ABC123",
+      "button": "Do aplikace →",
+      "checking": "Kontroluji..."
+    },
+    "new": {
+      "title": "Ještě nemáš přístup?",
+      "desc": "Jednorázová platba 1,99 €. Bez předplatného. Okamžitý přístup.",
+      "button": "Koupit nyní — 1,99 €"
+    },
+    "error": "Neplatný kód. Zkontroluj svůj přístupový kód.",
+    "connError": "Chyba připojení. Zkus to znovu."
+  },
   "iphone": {
     "title": "Uživatelé iPhone / iPad",
     "desc": "Safari nepodporuje Bluetooth. Stáhněte jednou zdarma aplikaci Bluefy a otevřete v ní primigi.dev.",

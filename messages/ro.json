@@ -5,7 +5,23 @@
     "ogTitle": "Aplicația Primigi pentru iPhone și Mac — Programează pantofii LED Infinity Light",
     "ogDescription": "Aplicație web pentru programarea textului LED al pantofilor Primigi Infinity Light. Primigi Lights funcționează doar pe Android — alternativa noastră funcționează pe iPhone, iPad, Mac și Windows."
   },
-  "nav": { "cta": "Descarcă aplicația — 1,99 €" },
+  "nav": { "cta": "Descarcă aplicația — 1,99 €", "start": "Lansează aplicația" },
+  "start": {
+    "returning": {
+      "title": "Bine ai revenit",
+      "desc": "Introdu codul tău de 6 caractere primit după cumpărare.",
+      "placeholder": "ABC123",
+      "button": "Mergi la aplicație →",
+      "checking": "Verifică..."
+    },
+    "new": {
+      "title": "Nu ai acces încă?",
+      "desc": "Plată unică de 1,99 €. Fără abonament. Acces imediat.",
+      "button": "Cumpără acum — 1,99 €"
+    },
+    "error": "Cod invalid. Verifică codul tău de acces.",
+    "connError": "Eroare de conexiune. Încearcă din nou."
+  },
   "iphone": {
     "title": "Utilizatori iPhone / iPad",
     "desc": "Safari nu suportă Bluetooth. Descarcă o dată aplicația gratuită Bluefy și deschide primigi.dev în ea.",

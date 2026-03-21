@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import LEDDisplay from "./LEDDisplay";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -123,23 +124,8 @@ export default function LandingPage() {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <LanguageSwitcher />
-          <a
-            href="/tool"
-            style={{
-              color: "#94a3b8",
-              fontSize: 14,
-              fontWeight: 600,
-              textDecoration: "none",
-              padding: "8px 14px",
-              borderRadius: 8,
-              border: "1px solid rgba(148,163,184,0.2)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Login
-          </a>
-          <a
-            href="#download"
+          <Link
+            href="/start"
             style={{
               background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
               color: "#08080f",
@@ -152,8 +138,8 @@ export default function LandingPage() {
               whiteSpace: "nowrap",
             }}
           >
-            {t("nav.cta")}
-          </a>
+            {t("nav.start")}
+          </Link>
         </div>
       </nav>
 
