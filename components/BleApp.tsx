@@ -27,9 +27,6 @@ const PRESETS = [
   "PLAY TO WIN",
 ];
 
-// ♥ removed — shoe maps it to byte 0x65 ('e') because charCode 9829 & 0xFF = 101
-const SYMBOLS = ["★", "!", "?", ".", ",", "-", "+", ":", "/", "(", ")", "#", "@", "*", "&", "%", "$", "=", "<", ">"];
-
 const MODE_ICONS: Record<number, string> = {
   1: "⚡", 2: "👾", 3: "❄️", 4: "⬇️", 5: "⬆️", 6: "➡️", 7: "⬅️", 8: "■",
 };
@@ -38,6 +35,7 @@ interface Shoe {
   id: string;
   label: string;
   char: BluetoothRemoteGATTCharacteristic;
+  flipped: boolean;
 }
 
 // "all" = both shoes, 0 = shoe 1 only, 1 = shoe 2 only
@@ -77,6 +75,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
   const [isSupported, setIsSupported] = useState(true);
   const [isIOS, setIsIOS] = useState(false);
 
+  const [upperCaseOnly, setUpperCaseOnly] = useState(true);
   const [sendFlash, setSendFlash] = useState(false);
   const [brightness, setBrightnessState] = useState(4);
   const [speed, setSpeedState] = useState(4);
@@ -139,16 +138,6 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
     }
   }, [accessCode]);
 
-  // Get characteristics to send to based on active target
-  const getTargetChars = useCallback(
-    (shoeList: Shoe[]): BluetoothRemoteGATTCharacteristic[] => {
-      if (activeTarget === "all") return shoeList.map((s) => s.char);
-      if (shoeList[activeTarget]) return [shoeList[activeTarget].char];
-      return shoeList.map((s) => s.char);
-    },
-    [activeTarget]
-  );
-
   const connect = useCallback(async () => {
     if (!navigator.bluetooth || shoes.length >= 2) return;
     setConnecting(true);
@@ -177,7 +166,7 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
       const service = await server.getPrimaryService(SERVICE_UUID);
       const char = await service.getCharacteristic(CHAR_UUID);
 
-      const newShoe: Shoe = { id: device.id, label, char };
+      const newShoe: Shoe = { id: device.id, label, char, flipped: false };
       setShoes((prev) => [...prev, newShoe]);
 
       // Auto-send last text to this specific shoe
@@ -191,6 +180,10 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
     }
   }, [shoes]);
 
+  const toggleFlip = useCallback((id: string) => {
+    setShoes((prev) => prev.map((s) => s.id === id ? { ...s, flipped: !s.flipped } : s));
+  }, []);
+
   const disconnectShoe = useCallback((id: string) => {
     setShoes((prev) => prev.filter((s) => s.id !== id));
     setActiveTarget("all");
@@ -198,69 +191,58 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
 
   const sendText = useCallback(
     async (override?: string) => {
-      const t = (override ?? textRef.current).trim();
-      if (shoes.length === 0 || !t) return;
+      const raw = (override ?? textRef.current).trim();
+      if (shoes.length === 0 || !raw) return;
       setSending(true);
-      const targets = getTargetChars(shoes);
+      const targetShoes = activeTarget === "all"
+        ? shoes
+        : shoes[activeTarget] ? [shoes[activeTarget]] : shoes;
       try {
-        await Promise.all(targets.map((char) => sendTextToShoe(char, t)));
-        setLastSent(t);
+        await Promise.all(
+          targetShoes.map((shoe) =>
+            sendTextToShoe(shoe.char, raw, shoe.flipped ? 1 : 0)
+          )
+        );
+        setLastSent(raw);
         setActiveAnimMode(null);
-        localStorage.setItem("primigi_last_text", t);
+        localStorage.setItem("primigi_last_text", raw);
       } catch (err) {
         console.error(err);
       } finally {
         setSending(false);
       }
     },
-    [shoes, getTargetChars]
+    [shoes, activeTarget]
   );
 
-  const insertSymbol = useCallback(
-    (sym: string) => {
-      const input = inputRef.current;
-      if (!input) {
-        setText((t) => (t + sym).slice(0, 40));
-        return;
-      }
-      const start = input.selectionStart ?? text.length;
-      const end = input.selectionEnd ?? text.length;
-      const newText = (text.slice(0, start) + sym + text.slice(end)).slice(0, 40);
-      setText(newText);
-      requestAnimationFrame(() => {
-        input.focus();
-        input.setSelectionRange(start + sym.length, start + sym.length);
-      });
-    },
-    [text]
+  const getTargetShoes = useCallback(
+    () => activeTarget === "all" ? shoes : shoes[activeTarget] ? [shoes[activeTarget]] : shoes,
+    [shoes, activeTarget]
   );
 
   const handleBrightness = useCallback(
     async (val: number) => {
       setBrightnessState(val);
-      const targets = getTargetChars(shoes);
-      await Promise.all(targets.map((char) => sendBrightness(char, val).catch(console.error)));
+      await Promise.all(getTargetShoes().map((s) => sendBrightness(s.char, val).catch(console.error)));
     },
-    [shoes, getTargetChars]
+    [getTargetShoes]
   );
 
   const handleSpeed = useCallback(
     async (val: number) => {
       setSpeedState(val);
-      const targets = getTargetChars(shoes);
-      await Promise.all(targets.map((char) => sendSpeed(char, val).catch(console.error)));
+      await Promise.all(getTargetShoes().map((s) => sendSpeed(s.char, val).catch(console.error)));
     },
-    [shoes, getTargetChars]
+    [getTargetShoes]
   );
 
   const handleAnimMode = useCallback(
     async (mode: number) => {
       if (shoes.length === 0) return;
       setActiveAnimMode(mode);
-      const targets = getTargetChars(shoes);
-      await Promise.all(targets.map((char) => sendAnimationMode(char, mode).catch(console.error)));
+      await Promise.all(getTargetShoes().map((s) => sendAnimationMode(s.char, mode).catch(console.error)));
     },
-    [shoes, getTargetChars]
+    [shoes, getTargetShoes]
   );
 
   const connected = shoes.length > 0;
@@ -426,6 +408,18 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
                 >
                   <span style={{ color: "#4ade80", fontSize: 13, fontWeight: 600 }}>🟢 {shoe.label}</span>
                   <button
+                    onClick={() => toggleFlip(shoe.id)}
+                    title={shoe.flipped ? "Normal (nicht gespiegelt)" : "Spiegeln (Schrift steht Kopf)"}
+                    style={{
+                      background: shoe.flipped ? "rgba(251,191,36,0.15)" : "rgba(56,189,248,0.08)",
+                      border: `1px solid ${shoe.flipped ? "rgba(251,191,36,0.4)" : "rgba(56,189,248,0.2)"}`,
+                      borderRadius: 6, color: shoe.flipped ? "#fbbf24" : "#475569",
+                      cursor: "pointer", fontSize: 11, padding: "2px 7px", fontWeight: 600,
+                    }}
+                  >
+                    {shoe.flipped ? "↕ AN" : "↕"}
+                  </button>
+                  <button
                     onClick={() => disconnectShoe(shoe.id)}
                     title="Trennen"
                     style={{
@@ -499,16 +493,35 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
 
         {/* Text input */}
         <div style={{ background: "#0f0f1a", borderRadius: 16, padding: 20, border: "1px solid rgba(56,189,248,0.1)", marginBottom: 12 }}>
-          <label style={{ display: "block", fontSize: 13, color: "#64748b", marginBottom: 8, letterSpacing: 1 }}>DEIN TEXT</label>
-          <div style={{ position: "relative", marginBottom: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+            <label style={{ fontSize: 13, color: "#64748b", letterSpacing: 1 }}>DEIN TEXT</label>
+            <button
+              onClick={() => {
+                setUpperCaseOnly((u) => {
+                  if (!u) setText((t) => t.toUpperCase());
+                  return !u;
+                });
+              }}
+              style={{
+                background: upperCaseOnly ? "rgba(56,189,248,0.12)" : "rgba(148,163,184,0.08)",
+                border: `1px solid ${upperCaseOnly ? "rgba(56,189,248,0.35)" : "rgba(148,163,184,0.2)"}`,
+                borderRadius: 6, color: upperCaseOnly ? "#38bdf8" : "#64748b",
+                cursor: "pointer", fontSize: 11, fontWeight: 700, padding: "3px 10px",
+                fontFamily: "'Space Mono', monospace", letterSpacing: 1,
+              }}
+            >
+              {upperCaseOnly ? "ABC" : "Abc"}
+            </button>
+          </div>
+          <div style={{ position: "relative" }}>
             <input
               ref={inputRef}
               type="text"
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e) => setText(upperCaseOnly ? e.target.value.toUpperCase() : e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendText(undefined)}
               maxLength={40}
-              placeholder="Text eingeben..."
+              placeholder={upperCaseOnly ? "TEXT EINGEBEN..." : "Text eingeben..."}
               style={{
                 width: "100%", padding: "12px 48px 12px 16px", borderRadius: 10,
                 border: "1px solid rgba(56,189,248,0.2)", background: "rgba(56,189,248,0.04)",
@@ -519,29 +532,6 @@ export default function BleApp({ requireAuth = false }: BleAppProps) {
             <span style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", fontSize: 11, color: "#475569", fontFamily: "monospace" }}>
               {text.length}/40
             </span>
-          </div>
-
-          {/* Symbol buttons */}
-          <div>
-            <p style={{ fontSize: 11, color: "#475569", letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Symbole</p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {SYMBOLS.map((sym) => (
-                <button
-                  key={sym}
-                  onClick={() => insertSymbol(sym)}
-                  style={{
-                    padding: "5px 10px", borderRadius: 6,
-                    border: "1px solid rgba(56,189,248,0.2)",
-                    background: "rgba(56,189,248,0.04)",
-                    color: "#94a3b8", cursor: "pointer", fontSize: 15,
-                    fontFamily: "'Space Mono', monospace",
-                    minWidth: 36, textAlign: "center",
-                  }}
-                >
-                  {sym}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
 

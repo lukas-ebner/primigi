@@ -24,11 +24,13 @@ function hexToBytes(hex: string): Uint8Array {
   return bytes;
 }
 
-/** Text packet: FE 33 [len=chars+1] [dir=00] [chars...] [checksum] */
-export function encodeText(text: string): Uint8Array {
+/**
+ * Text packet: FE 33 [len=chars+1] [dir] [chars...] [checksum]
+ * direction: 0 = normal (left→right), 1 = flipped (right→left / upside-down)
+ */
+export function encodeText(text: string, direction = 0): Uint8Array {
   const chars = Array.from(text).map((c) => c.charCodeAt(0));
   const length = chars.length + 1;
-  const direction = 0;
   const checksum =
     (256 -
       ((CMD_TEXT + length + direction + chars.reduce((a, b) => a + b, 0)) %
@@ -70,9 +72,10 @@ async function sendBytes(
 
 export async function sendTextToShoe(
   characteristic: BluetoothRemoteGATTCharacteristic,
-  text: string
+  text: string,
+  direction = 0
 ): Promise<void> {
-  await sendBytes(characteristic, encodeText(text));
+  await sendBytes(characteristic, encodeText(text, direction));
 }
 
 export async function sendAnimationMode(
